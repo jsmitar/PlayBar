@@ -1,0 +1,103 @@
+// -*- coding: iso-8859-1 -*-
+/*
+ *   Author: audoban <audoban@openmailbox.org>
+ *   Date: jue may 1 2014, 13:05:43
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU Library General Public License as
+ *   published by the Free Software Foundation; either version 2 or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details
+ *
+ *   You should have received a copy of the GNU Library General Public
+ *   License along with this program; if not, write to the
+ *   Free Software Foundation, Inc.,
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
+import QtQuick 1.1
+import org.kde.plasma.core 0.1 as PlasmaCore
+import "plasmapackage:/code/control.js" as Control
+
+Item{
+    id: ratingItem
+
+	property Mpris2 source
+
+    property real rating: source.userRating
+
+    property int sizeIcon: 18
+
+    implicitHeight: content.implicitHeight
+
+    implicitWidth: content.implicitWidth
+
+    property variant svgId:
+    {
+        'low'    : "rating-low",
+        'medium' : "rating-medium",
+        'high'   : "rating-high"
+    }
+
+	Component.onCompleted: {
+		for(i = 0; i < 5; i++){
+			plasmoid.addEventListener('configChanged', ratingItems.itemAt(i).update)
+			source.ratingChanged.connect(ratingItems.itemAt(i).setRating)
+		}
+	}
+
+
+    Component{
+        id: svgDelegate
+        PlasmaCore.SvgItem{
+			clip: true
+
+			svg: plasmoid.readConfig("opaqueIcons") == true ?
+				Svg(plasmoid.readConfig("rating-opaque"))
+				: Svg(plasmoid.readConfig("rating"))
+            elementId: svgId['low']
+            implicitWidth: sizeIcon
+            implicitHeight: sizeIcon
+
+			function update(){
+				if(plasmoid.readConfig("opaqueIcons") == true){
+					  svg = Svg(plasmoid.readConfig("rating-opaque"))
+				}else  svg = Svg(plasmoid.readConfig("rating"))
+
+				svgChanged()
+			}
+
+            function setRating() {
+                var iRating = (index + 1)/5
+                if ( rating >= iRating )
+                    elementId = svgId['high']
+                else if ( rating.toFixed(1) == (iRating - 0.1).toFixed(1) )
+                    elementId = svgId['medium']
+                else
+                    elementId = svgId['low']
+            }
+
+			Component.onDestruction: {
+				source.ratingChanged.disconnect(setRating)
+			}
+        }
+    }
+
+    Row{
+        id: content
+        spacing: 3
+		opacity: rating == 0 ? 0.7 : 1
+
+		Behavior on opacity{ NumberAnimation{duration: 250} }
+
+		Repeater{
+            id: ratingItems
+            model: 5
+            delegate: svgDelegate
+        }
+    }
+}
