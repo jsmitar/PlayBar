@@ -36,7 +36,7 @@ Item {
 
 	property int maximumHeight: 256
 
-    property bool vertical: false
+	property bool vertical: false
 
 	property bool popupOpen: popup.status == PlasmaComponents.DialogStatus.Open
 
