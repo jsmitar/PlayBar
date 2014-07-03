@@ -65,6 +65,8 @@ Item {
 		mpris.nextSource()
 		if(showNotifications) Control.sourceNotify()
 	}
+
+	//TODO: open file
 	//###########################
 
 	function setMaximumLoad(){
@@ -119,8 +121,6 @@ Item {
 
         plasmoid.formFactorChanged.connect(formFactorChanged)
         formFactorChanged()
-
-		if(theme.name)
 
 		plasmoid.addEventListener('configChanged', function(){
 				showNotifications = plasmoid.readConfig('showNotifications')
@@ -252,12 +252,12 @@ Item {
 		}
 	}
 
+	//Load the notifications
 	Loader{
 		id: loader
 		sourceComponent:
 			if(showNotifications) notification
 			else undefined
-
 	}
 
 }
