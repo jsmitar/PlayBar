@@ -3,9 +3,6 @@
  *   Author: audoban <audoban@openmailbox.org>
  *   Date: jue may 1 2014, 13:05:43
  *
- *   Code taken from PlasmaComponents.ProgressBar:
- *   Copyright 2011 Daker Fernandes Pinheiro <dakerfp@gmail.com>
- *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library General Public License as
  *   published by the Free Software Foundation; either version 2 or
