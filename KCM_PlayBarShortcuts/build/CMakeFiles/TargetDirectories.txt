@@ -1,0 +1,3 @@
+/home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/src/CMakeFiles/kcm_playbarshortcuts.dir
+/home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/src/CMakeFiles/kcm_playbarshortcuts_automoc.dir
+/home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/uninstall.dir

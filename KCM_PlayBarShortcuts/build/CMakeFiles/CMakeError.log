@@ -1,0 +1,123 @@
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/ninja cmTryCompileExec2233369263
+[1/2] Building C object CMakeFiles/cmTryCompileExec2233369263.dir/CheckSymbolExists.c.o
+FAILED: /usr/bin/cc    -o CMakeFiles/cmTryCompileExec2233369263.dir/CheckSymbolExists.c.o   -c CheckSymbolExists.c
+CheckSymbolExists.c: In function ‘main’:
+CheckSymbolExists.c:8:19: error: ‘Q_WS_WIN’ undeclared (first use in this function)
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^
+CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+ninja: build stopped: subcommand failed.
+
+File /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/ninja cmTryCompileExec3023139065
+[1/2] Building C object CMakeFiles/cmTryCompileExec3023139065.dir/CheckSymbolExists.c.o
+FAILED: /usr/bin/cc    -o CMakeFiles/cmTryCompileExec3023139065.dir/CheckSymbolExists.c.o   -c CheckSymbolExists.c
+CheckSymbolExists.c: In function ‘main’:
+CheckSymbolExists.c:8:19: error: ‘Q_WS_QWS’ undeclared (first use in this function)
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^
+CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+ninja: build stopped: subcommand failed.
+
+File /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/ninja cmTryCompileExec3728882190
+[1/2] Building C object CMakeFiles/cmTryCompileExec3728882190.dir/CheckSymbolExists.c.o
+FAILED: /usr/bin/cc    -o CMakeFiles/cmTryCompileExec3728882190.dir/CheckSymbolExists.c.o   -c CheckSymbolExists.c
+CheckSymbolExists.c: In function ‘main’:
+CheckSymbolExists.c:8:19: error: ‘Q_WS_MAC’ undeclared (first use in this function)
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^
+CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+ninja: build stopped: subcommand failed.
+
+File /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/ninja cmTryCompileExec3499140679
+[1/2] Building C object CMakeFiles/cmTryCompileExec3499140679.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTryCompileExec3499140679
+FAILED: : && /usr/bin/cc     CMakeFiles/cmTryCompileExec3499140679.dir/CheckSymbolExists.c.o  -o cmTryCompileExec3499140679  -rdynamic && :
+CMakeFiles/cmTryCompileExec3499140679.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+File /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/ninja cmTryCompileExec3108540777
+[1/2] Building C object CMakeFiles/cmTryCompileExec3108540777.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTryCompileExec3108540777
+FAILED: : && /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create   CMakeFiles/cmTryCompileExec3108540777.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3108540777  -rdynamic -lpthreads && :
+/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
