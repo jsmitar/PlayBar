@@ -125,6 +125,8 @@ Item {
 		plasmoid.addEventListener('configChanged', function(){
 				showNotifications = plasmoid.readConfig('showNotifications')
 				sep.visible = plasmoid.readConfig('separatorVisible')
+				playbackBar.buttonSize = plasmoid.readConfig('buttonSize')
+				plasmoid.resize(minimumWidth, minimumHeight)
 			}
 		)
 
@@ -171,6 +173,8 @@ Item {
 
 			iconSource: main.popupOpen ? opened : closed
 			onClicked: { main.popupOpen ? popup.close(): popup.open(); }
+
+			size: playbackBar.flatButtons ? playbackBar.buttonSize : playbackBar.buttonSize - 3
 		}
 
 		PlasmaWidgets.Separator{
@@ -185,6 +189,8 @@ Item {
 			id: playbackBar
 
 			source: mpris
+
+			buttonSize: plasmoid.readConfig('buttonSize')
 		}
 
 		Dialog{

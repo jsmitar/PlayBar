@@ -57,5 +57,9 @@
             <label></label>
             <default>false</default>
         </entry>
+		<entry name="buttonSize" type="Int">
+            <label></label>
+            <default>20</default>
+        </entry>
     </group>
 </kcfg>

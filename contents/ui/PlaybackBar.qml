@@ -87,6 +87,8 @@ PlaybackItem{
         ToolButton{
             iconSource: icon
             visible: index == 2 ? showStop : true
+			width: buttonSize + 2
+			height: buttonSize + 2
         }
     }
 
@@ -96,6 +98,7 @@ PlaybackItem{
         IconWidget{
             iconSource: icon
             visible: index == 2 ? showStop : true
+			size: buttonSize
         }
     }
 

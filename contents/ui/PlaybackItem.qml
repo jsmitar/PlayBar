@@ -33,7 +33,7 @@ Item{
 
     property real spacing: -2
 
-    property int buttonSize
+    property int buttonSize: 22
 
 	property Mpris2 source
 
