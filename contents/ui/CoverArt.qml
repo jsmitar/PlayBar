@@ -134,7 +134,8 @@ Item{
 		cache: true
 
 		onStatusChanged: {
-			if(status == Image.Error) print(source)
+			if(status == Image.Error)
+				print(coverArt.source.artUrl)
 		}
 	}
 
