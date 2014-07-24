@@ -1,2 +1,0 @@
-/usr/lib64/kde4/kcm_playbarshortcuts.so
-/usr/share/kde4/services/kcm_playbarshortcuts.desktop
