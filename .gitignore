@@ -1,5 +1,4 @@
-#Ignore hidden files
-.~*
+# Ignore hidden files
 .directory
 
 # build directory
@@ -8,7 +7,9 @@ build/
 # backup files
 *.qml~
 *.xml~
+*.js~
 *.desktop~
+.~*
 
 # KDevelop Project files
 *.kdev4
