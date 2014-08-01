@@ -20,18 +20,19 @@
 #ifndef MPRISSERVICE_H
 #define MPRISSERVICE_H
 
-#include <Plasma/Service>
 #include <Plasma/DataEngine>
-#include <Plasma/Applet>
+#include <Plasma/Service>
+#include <Plasma/ServiceJob>
+#include <KConfigGroup>
 
-class MprisService : public Plasma::Applet
+using namespace Plasma;
+
+class MprisService : public QObject
 {
    Q_OBJECT
 public:
-    MprisService(QObject* parent, const QVariantList& args);
+    MprisService(QObject* parent);
     ~MprisService();
-
-    void init();
 
 public slots:
     void startOperation(const QString& name);
@@ -48,7 +49,12 @@ public slots:
 private:
     Plasma::DataEngine *mpris2;
     Plasma::Service *serv;
-    QString source;
+    Plasma::ServiceJob *job;
+    KConfigGroup op;
+    QString serviceName;
+
+private slots:
+    void jobCompleted(KJob*);
 };
 
 #endif // MPRISSERVICE_H

@@ -133,12 +133,20 @@ Type=Native Application
 
 [Launch][Launch Configuration 0][Data]
 Arguments=
+Debugger Shell=
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
 Dependency Action=Nothing
+Display Demangle Names=true
+Display Static Members=false
 EnvironmentGroup=default
 Executable=file:///home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/
 External Terminal=konsole --noclose --workdir %workdir -e sudo ninja install \s
+GDB Path=
 Project Target=
+Remote GDB Config Script=
+Remote GDB Run Script=
+Remote GDB Shell Script=kcmshell4%20kcm_playbarshortcuts
+Start With=GdbConsole
 Use External Terminal=true
 Working Directory=file:///home/audoban/Escritorio/Dev/desktop-projects/PlayBar/KCM_PlayBarShortcuts/build
 isExecutable=true

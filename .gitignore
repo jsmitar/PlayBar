@@ -1,5 +1,15 @@
 #Ignore hidden files
-.*~
-.~.*
+.~*
 .directory
-build
+
+# build directory
+build/
+
+# backup files
+*.qml~
+*.xml~
+*.desktop~
+
+# KDevelop Project files
+*.kdev4
+.kdev4/

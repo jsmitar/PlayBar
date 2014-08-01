@@ -19,14 +19,15 @@
 
 #include "kcm_playbarshortcuts.h"
 
+//KDE
 #include <KPluginFactory>
 #include <KPluginLoader>
 #include <KAboutData>
-#include <QBoxLayout>
-
 #include <KAction>
 #include <KIcon>
-#include <Plasma/DataEngine>
+
+//Qt
+#include <QBoxLayout>
 
 K_PLUGIN_FACTORY(PlayBarShortcutsFactory, registerPlugin<KCM_PlayBarShortcuts>();)
 
@@ -51,7 +52,6 @@ KCM_PlayBarShortcuts::KCM_PlayBarShortcuts(QWidget*& parent, const QVariantList&
     about.addAuthor(ki18n("Smith AR"), KLocalizedString(), "mail@example.com");
 
     //Layout
-
     QVBoxLayout* vBox = new QVBoxLayout();
 
     shortcutsWidget = new KShortcutsEditor(0, KShortcutsEditor::GlobalAction);
@@ -67,16 +67,19 @@ KCM_PlayBarShortcuts::KCM_PlayBarShortcuts(QWidget*& parent, const QVariantList&
 
     vBox->addWidget(shortcutsWidget);
 
-    mpris2 = new MprisService(parent, args);
+
+
 }
 
 KCM_PlayBarShortcuts::~KCM_PlayBarShortcuts()
 {
+
 }
 
 void KCM_PlayBarShortcuts::createMediaActions(QWidget* parent)
 {
     actions = new KActionCollection(parent);
+    actions->setConfigGlobal(true);
 
     KAction* previous = createAction("media-skip-backward", "Previous", Qt::Key_MediaPrevious, actions);
 
@@ -86,27 +89,37 @@ void KCM_PlayBarShortcuts::createMediaActions(QWidget* parent)
 
     KAction* stop = createAction("media-playback-stop", "Stop", Qt::Key_MediaStop, actions);
 
-    KAction* play_pause = createAction("media-playback-start", "Play/Pause", Qt::Key_MediaTogglePlayPause, actions);
+    KAction* play_pause = createAction("media-playback-start", "PlayPause", Qt::Key_MediaTogglePlayPause, actions);
 
     KAction* next = createAction("media-skip-forward", "Next", Qt::Key_MediaNext, actions);
 
     actions->addAction("Play", play);
     actions->addAction("Pause", pause);
-    actions->addAction("Play/Pause", play_pause);
+    actions->addAction("PlayPause", play_pause);
     actions->addAction("Stop", stop);
     actions->addAction("Previous", previous);
     actions->addAction("Next", next);
     actions->setConfigGlobal(true);
+
+    service = new MprisService(parent);
+
+    connect(actions, SIGNAL(actionTriggered(QAction*)), this, SLOT(actionTriggered(QAction*)));
+
 }
 
 KAction* KCM_PlayBarShortcuts::createAction(const char* icon, const char* name, Qt::Key key, QObject* parent)
 {
-    KAction *action = new KAction(KIcon(icon), ki18n(name).toString(), parent);
+    KAction* action = new KAction(KIcon(icon), ki18n(name).toString(), parent);
     action->setObjectName(name);
-    //action->setGlobalShortcutAllowed(true);
     action->setGlobalShortcut(KShortcut(key));
 
     return action;
+}
+
+void KCM_PlayBarShortcuts::actionTriggered(QAction* action)
+{
+    service = new MprisService(0);
+    service->startOperation(action->objectName());
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

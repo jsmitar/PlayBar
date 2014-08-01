@@ -5,8 +5,6 @@ set(kcm_playbarshortcuts_SRCS
    mprisservice.cpp
  )
 
-add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
-
 # Set the name of the application
 kde4_add_executable(kcm_playbarshortcuts ${kcm_playbarshortcuts_SRCS})
 
@@ -14,7 +12,7 @@ kde4_add_executable(kcm_playbarshortcuts ${kcm_playbarshortcuts_SRCS})
 kde4_add_plugin(kcm_playbarshortcuts ${playbarshortcuts_SRCS} ${KDE4_MODULE_DIR})
 
 # Select which libraries we need to link to
-target_link_libraries(kcm_playbarshortcuts ${KDE4_KDEUI_LIBS})
+target_link_libraries(kcm_playbarshortcuts ${KDE4_KDEUI_LIBS} ${KDE4_PLASMA_LIBS})
 
 # Tell cmake to install the application binary library
 install(TARGETS kcm_playbarshortcuts DESTINATION ${PLUGIN_INSTALL_DIR} )

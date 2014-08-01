@@ -26,6 +26,7 @@
 #include <KShortcutsEditor>
 #include <KActionCollection>
 
+using namespace Plasma;
 
 /**
  * This class serves as the main window for KCM_PlayBarShortcuts.  It handles the
@@ -47,6 +48,9 @@ public:
      */
     virtual ~KCM_PlayBarShortcuts();
 
+public slots:
+    void actionTriggered(QAction *);
+
 private:
 
     void createMediaActions(QWidget* parent);
@@ -57,8 +61,9 @@ private:
     KShortcutsEditor* shortcutsWidget;
     KActionCollection* actions;
 
-    //Service
-    MprisService *mpris2;
+    //DataEngine Mpris2
+    MprisService* service;
+
 };
 
 #endif // _KCM_PLAYBARSHORTCUTS_H_

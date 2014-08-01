@@ -45,6 +45,16 @@ Item{
 
     signal stop()
 
+	//property action actionplaypause;
+	//action{ id: action_playpause }
+
+	//action_playpause.shortcut: Qt.Key_MediaPlay
+
+	focus: true
+	Keys.onPressed: {
+		if (event.key == Qt.Key_MediaPlay) playPause()
+	}
+
 	function showStopChanged(source){
 		if( source == undefined ) source = playbackitem.source.source
 		if( source != 'spotify' ) showStop = plasmoid.readConfig('showStop')

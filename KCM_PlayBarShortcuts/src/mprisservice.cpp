@@ -20,27 +20,18 @@
 #include "mprisservice.h"
 
 #include "iostream"
-#include <KService>
-#include <KServiceTypeTrader>
-#include <Plasma/Applet>
 
-MprisService::MprisService(QObject* parent, const QVariantList& args)
-: Plasma::Applet(parent, args)
+//KDE
+#include <Plasma/DataEngineManager>
+
+MprisService::MprisService(QObject* parent)
+    : QObject(parent)
 {
-//     KService::List services;
-//     KServiceTypeTrader* trader = KServiceTypeTrader::self();
-//
-//     QString constraint = "'mpris2' ~~ Library";
-//     services = trader->query("Plasma/DataEngine", constraint);
-//
-//     KService::Ptr service = services[0];
+    DataEngineManager* engine = DataEngineManager::self();
+    mpris2 = engine->loadEngine("mpris2");
+    serviceName = "@multiplex";
+    serv = mpris2->serviceForSource(serviceName);
 
-    //mpris2 = dataEngine("mpris2");
-    //serv = mpris2->serviceForSource("@multiplex");
-}
-
-void MprisService::init(){
-    
 }
 
 MprisService::~MprisService()
@@ -85,6 +76,14 @@ void MprisService::upVolume()
 }
 void MprisService::startOperation(const QString& name)
 {
+    op = serv->operationDescription(name);
+    job = serv->startOperationCall(op);
+    connect(job, SIGNAL(finished(KJob*)), this, SLOT(jobCompleted(KJob*)));
+}
+
+void MprisService::jobCompleted(KJob* job)
+{
 
 }
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

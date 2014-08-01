@@ -76,6 +76,7 @@ Item{
 
 			Behavior on x{
 				SequentialAnimation{
+					//TODO: Change to PropertyAction
 					PropertyAnimation{
 						property: 'wrapMode'
 						duration: 0
