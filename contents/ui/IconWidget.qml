@@ -24,23 +24,23 @@ import org.kde.plasma.core 0.1
 
 
 IconItem {
-    id: iconWidget
+	id: iconWidget
 
-    property string iconSource
+	property string iconSource
 
-    property int size: theme.smallIconSize + 3
+	property int size: theme.smallIconSize + 3
 
-    source: iconSource
+	source: iconSource
 
-    implicitWidth: size
+	implicitWidth: size
 
-    implicitHeight: size
+	implicitHeight: size
 
-    smooth: true
+	smooth: true
 
-    signal clicked()
+	signal clicked()
 
-    Component.onCompleted: mouseArea.clicked.connect(clicked)
+	Component.onCompleted: mouseArea.clicked.connect(clicked)
 
 	Behavior on scale { SequentialAnimation{
 			NumberAnimation { to: 0.9; duration: 150 }
@@ -48,11 +48,11 @@ IconItem {
 		}
 	}
 
-    MouseArea{
-        id: mouseArea
-        anchors.fill: parent
+	MouseArea{
+		id: mouseArea
+		anchors.fill: parent
 
-        onPressed:  parent.scale = 0.8
-        onReleased: parent.scale = 1
-    }
+		onPressed:  parent.scale = 0.8
+		onReleased: parent.scale = 1
+	}
 }

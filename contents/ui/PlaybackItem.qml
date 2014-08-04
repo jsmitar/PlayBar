@@ -50,11 +50,6 @@ Item{
 
 	//action_playpause.shortcut: Qt.Key_MediaPlay
 
-	focus: true
-	Keys.onPressed: {
-		if (event.key == Qt.Key_MediaPlay) playPause()
-	}
-
 	function showStopChanged(source){
 		if( source == undefined ) source = playbackitem.source.source
 		if( source != 'spotify' ) showStop = plasmoid.readConfig('showStop')
@@ -81,8 +76,8 @@ Item{
 		source.sourceChanged.connect(showStopChanged)
 		plasmoid.addEventListener('configChanged', showStopChanged)
 	}
+
 	Component.onDestruction: {
 		source.sourceChanged.disconnect(showStopChanged)
 	}
-
 }

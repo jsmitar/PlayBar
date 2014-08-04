@@ -28,7 +28,7 @@ import "plasmapackage:/code/control.js" as Control
 Item {
     id: main
 
-    property int minimumWidth: childrenRect.width
+	property int minimumWidth: childrenRect.width
 
 	property int minimumHeight: childrenRect.height
 

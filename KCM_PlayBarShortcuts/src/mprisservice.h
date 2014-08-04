@@ -29,7 +29,7 @@ using namespace Plasma;
 
 class MprisService : public QObject
 {
-   Q_OBJECT
+    Q_OBJECT
 public:
     MprisService(QObject* parent);
     ~MprisService();
@@ -47,9 +47,9 @@ public slots:
     void downVolume();
 
 private:
-    Plasma::DataEngine *mpris2;
-    Plasma::Service *serv;
-    Plasma::ServiceJob *job;
+    Plasma::DataEngine* mpris2;
+    Plasma::Service* serv;
+    Plasma::ServiceJob* job;
     KConfigGroup op;
     QString serviceName;
 
@@ -58,3 +58,4 @@ private slots:
 };
 
 #endif // MPRISSERVICE_H
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on;

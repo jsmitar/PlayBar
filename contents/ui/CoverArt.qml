@@ -24,15 +24,15 @@ import org.kde.plasma.components 0.1 as PlasmaComponents
 import org.kde.plasma.core 0.1 as PlasmaCore
 
 Item{
-    id: coverArt
+	id: coverArt
 
 	property Mpris2 source
 
-    property int size: 80
+	property int size: 80
 
-    implicitWidth: size + 8
+	implicitWidth: size + 8
 
-    implicitHeight: size + 8
+	implicitHeight: size + 8
 
 	states: [
 		State{
@@ -82,18 +82,18 @@ Item{
 	}
 
     Rectangle{
-        id: bg
+		id: bg
 
-        color: theme.textColor
-        width: size
-        height: size
+		color: theme.textColor
+		width: size
+		height: size
 		radius: 1
 		clip: true
 
 		anchors.centerIn: parent
 
-        border{
-            color: bg.color
+		border{
+			color: bg.color
             width: 4
         }
 		Rectangle{

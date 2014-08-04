@@ -10,11 +10,9 @@ Type=Service
 X-Plasma-API=declarativeappletscript
 X-Plasma-MainScript=ui/main.qml
 X-Plasma-DefaultSize=109,19
-#X-Plasma-RemoteLocation=
-#X-Plasma-RequiredExtensions=HTTP
 X-Plasma-ConfigPlugins=kcm_playbarshortcuts
 
-X-KDE-PluginInfo-Author=Smith
+X-KDE-PluginInfo-Author=Smith AR
 X-KDE-PluginInfo-Email=audoban@openmailbox.org
 X-KDE-PluginInfo-Website=http://kde-apps.org/content/show.php?action=content&content=165396
 X-KDE-PluginInfo-Category=Multimedia
@@ -23,6 +21,5 @@ X-KDE-PluginInfo-Version=0.5.2
 X-KDE-PluginInfo-License=GPL
 
 X-KDE-ServiceTypes=Plasma/Applet
-#X-KDE-ParentApp=
 
 
