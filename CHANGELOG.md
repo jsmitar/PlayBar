@@ -1,5 +1,4 @@
 #**CHANGELOG**#
-
 #### Version 0.6
 
 * Fixed bug that prevented show and hide the separator
@@ -7,6 +6,7 @@
 * Added Global Keyboard Shortcuts and can be configured since Preferences>Global Shortcuts>KDE Component: Shell Plasma
 * Improved behavior when changing the media source
 * Tweaks to the UI and various minor bug fixes
+* Fixed CMakeLists.txt
 
 NOTE: Since now Playbar becomes binary plasmoid, please see the README.md
 
