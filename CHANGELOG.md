@@ -1,9 +1,14 @@
 #**CHANGELOG**#
 
-#### Version 0.5.2
+#### Version 0.6
 
 * Fixed bug that prevented show and hide the separator
 * Added option to change size buttons of bar-controls
+* Added Global Keyboard Shortcuts and can be configured since Preferences>Global Shortcuts>KDE Component: Shell Plasma
+* Improved behavior when changing the media source
+* Tweaks to the UI and various minor bug fixes
+
+NOTE: Since now Playbar becomes binary plasmoid, please see the README.md
 
 #### Version 0.5.1
 
