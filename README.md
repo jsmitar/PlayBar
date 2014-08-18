@@ -9,10 +9,10 @@ Remember to install the development libraries for KDE _libkde-devel_
 
 Create a build directory and then enter it.
 ```
-mkdir build ; cd build
+mkdir build && cd build
 ```
 
 And compile :D
 ```
-cmake .. ; make ; sudo make install
+cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make && make install
 ```
