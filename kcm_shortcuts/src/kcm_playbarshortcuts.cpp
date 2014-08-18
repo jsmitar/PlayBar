@@ -23,11 +23,19 @@
 #include <KPluginFactory>
 #include <KPluginLoader>
 #include <KAboutData>
+
+#include <kicon.h>
+
 #include <KAction>
-#include <KIcon>
+
+#include <Plasma/DataEngine>
+#include <Plasma/DataEngineManager>
 
 //Qt
 #include <QBoxLayout>
+
+using Plasma::DataEngine;
+using Plasma::DataEngineManager;
 
 K_PLUGIN_FACTORY(PlayBarShortcutsFactory, registerPlugin<KCM_PlayBarShortcuts>();)
 
@@ -39,72 +47,60 @@ K_EXPORT_PLUGIN(PlayBarShortcutsFactory(
 KCM_PlayBarShortcuts::KCM_PlayBarShortcuts(QWidget*& parent, const QVariantList& args)
     : KCModule(PlayBarShortcutsFactory::componentData(), parent, args)
 {
-    KAboutData about("simple",
-                     0,
+    // About info
+    KAboutData about("simple", 0,
                      ki18n("KCM_PlayBarShortcuts"), "0.6",
                      ki18n("Configure PlayBar global shortcuts"),
                      KAboutData::License_GPL,
                      ki18n("(C) 2014 Smith AR"),
-                     KLocalizedString(),
-                     0,
+                     KLocalizedString(), 0,
                      "audoban@openmailbox.org");
 
     about.addAuthor(ki18n("Smith AR"), KLocalizedString(), "mail@example.com");
 
-    //Layout
-    QVBoxLayout* vBox = new QVBoxLayout();
-
+    // KShortcutsEditor widget
     shortcutsWidget = new KShortcutsEditor(0, KShortcutsEditor::GlobalAction);
     shortcutsWidget->setMinimumSize(200, 200);
 
+    //Layout
+    QVBoxLayout* vBox = new QVBoxLayout();
+    vBox->addWidget(shortcutsWidget);
     this->setLayoutDirection(Qt::LayoutDirectionAuto);
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->setLayout(vBox);
 
     //create action collection
-    createMediaActions(shortcutsWidget);
-    shortcutsWidget->addCollection(actions, "PlayBar");
-
-    vBox->addWidget(shortcutsWidget);
-
-
+    createMediaActions();
 
 }
 
 KCM_PlayBarShortcuts::~KCM_PlayBarShortcuts()
 {
+    shortcutsWidget->clearCollections();
+    actions->clear();
 
 }
 
-void KCM_PlayBarShortcuts::createMediaActions(QWidget* parent)
+void KCM_PlayBarShortcuts::createMediaActions()
 {
-    actions = new KActionCollection(parent);
-    actions->setConfigGlobal(true);
 
-    KAction* previous = createAction("media-skip-backward", "Previous", Qt::Key_MediaPrevious, actions);
+    compdata = new KComponentData("PlayBar");
+    actions = new KActionCollection(shortcutsWidget, *compdata);
+    shortcutsWidget->addCollection(actions, "PlayBar");
 
-    KAction* pause = createAction("media-playback-pause", "Pause", Qt::Key_MediaPause, actions);
+    DataEngine *engine =
+    DataEngineManager::self()->engine("playbarkeys");
 
-    KAction* play = createAction("media-playback-start", "Play", Qt::Key_MediaPlay, actions);
+    if(engine->isValid()){
+        DataEngine::Data source = engine->query("Shortcuts");
 
-    KAction* stop = createAction("media-playback-stop", "Stop", Qt::Key_MediaStop, actions);
+        if (source.empty()) return;
 
-    KAction* play_pause = createAction("media-playback-start", "PlayPause", Qt::Key_MediaTogglePlayPause, actions);
-
-    KAction* next = createAction("media-skip-forward", "Next", Qt::Key_MediaNext, actions);
-
-    actions->addAction("Play", play);
-    actions->addAction("Pause", pause);
-    actions->addAction("PlayPause", play_pause);
-    actions->addAction("Stop", stop);
-    actions->addAction("Previous", previous);
-    actions->addAction("Next", next);
-    actions->setConfigGlobal(true);
-
-    service = new MprisService(parent);
-
-    connect(actions, SIGNAL(actionTriggered(QAction*)), this, SLOT(actionTriggered(QAction*)));
-
+        foreach(QString key, source.keys()) {
+            KAction act();
+            actions->addAction(key);
+        }
+    }
 }
 
 KAction* KCM_PlayBarShortcuts::createAction(const char* icon, const char* name, Qt::Key key, QObject* parent)
@@ -114,12 +110,6 @@ KAction* KCM_PlayBarShortcuts::createAction(const char* icon, const char* name, 
     action->setGlobalShortcut(KShortcut(key));
 
     return action;
-}
-
-void KCM_PlayBarShortcuts::actionTriggered(QAction* action)
-{
-    service = new MprisService(0);
-    service->startOperation(action->objectName());
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
