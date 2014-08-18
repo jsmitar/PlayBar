@@ -108,9 +108,9 @@ Item{
                 property int widthCorrection: labelAbove || !labelVisible ? 0: 43
 
 				width: orientation == QtVertical ?
-					7 : volumeWidget.width - icon.width - parent.spacing - widthCorrection
+					8 : volumeWidget.width - icon.width - parent.spacing - widthCorrection
 				height: orientation == QtHorizontal ?
-					7 : volumeWidget.height - icon.width - parent.spacing
+					8 : volumeWidget.height - icon.width - parent.spacing
 
 				onValueChanged: {
 					Control.setVolume(value)

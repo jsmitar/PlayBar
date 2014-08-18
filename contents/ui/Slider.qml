@@ -79,8 +79,8 @@ Item{
 			anchors{
 				topMargin: 0
 				bottomMargin: 0
-				leftMargin: -1
-				rightMargin: -1
+				//leftMargin: -1
+				//rightMargin: -1
 			}
 		}
 		AnchorChanges{
@@ -175,8 +175,8 @@ Item{
 				left: parent.left
 				top: parent.top
 				bottom: parent.bottom
-				topMargin: -1
-				bottomMargin: -1
+				//topMargin: -1
+				//bottomMargin: -1
 			}
 			radius: 2
 			smooth: true
@@ -198,7 +198,7 @@ Item{
 				width: 4
 			}
 			opacity: 0
-			radius: 1
+			radius: 0.1
 			smooth: true
 
 			anchors{
