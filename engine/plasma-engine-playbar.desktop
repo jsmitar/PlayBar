@@ -1,5 +1,6 @@
 [Desktop Entry]
-Name=PlayBar keys engine
+Name=PlayBar keys
+Icon=preferences-desktop-keyboard-shortcuts
 Comment=Adds support for keyboard shortcuts
 Type=Service
 
