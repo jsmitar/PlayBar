@@ -34,7 +34,7 @@ ServiceJob* PlayBarService::createJob(const QString& operation, QMap< QString, Q
 
 void Job::start()
 {
-    PlayBarEngine::mpris2Source = parameters().value("source").toString();
+    PlayBarEngine::mpris2Source = parameters().value(operationName()).toString();
     setResult(true);
 }
 

@@ -280,7 +280,7 @@ Item {
 		function sourceChanged(source){
 			var serv = serviceForSource('Shortcuts');
 			var op = serv.operationDescription('SetSource');
-			op['source'] = source;
+			op['name'] = source;
 			serv.startOperationCall(op);
 		}
 		Component.onCompleted: mpris.sourceChanged.connect(sourceChanged)

@@ -30,4 +30,4 @@ install(FILES plasma-engine-playbar.desktop
         DESTINATION ${SERVICES_INSTALL_DIR})
 
 install(FILES playbarkeys.operations
-		DESTINATION ${DATA_INSTALL_DIR}/plasma/services)
+        DESTINATION ${DATA_INSTALL_DIR}/plasma/services)

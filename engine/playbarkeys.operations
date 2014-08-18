@@ -2,7 +2,7 @@
 <!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
 <kcfg>
 	<group name="SetSource">
-		<entry name="source" type="String">
+		<entry name="name" type="String">
 			<label>Set the name of the source Mpris2</label>
 		</entry>
 	</group>
