@@ -65,7 +65,7 @@ KAction* PlayBarEngine::createAction(const char* name, Qt::Key key)
         text = ki18n("Play").toString() + '/' + ki18n("Pause").toString();
     else text = ki18n(name).toString();
 
-    KAction* action = new KAction(text, 0);
+    KAction* action = new KAction("PlayBar: "+text, 0);
     action->setObjectName(name);
     action->setParent(mediaActions);
     action->setGlobalShortcut(KShortcut(key));
