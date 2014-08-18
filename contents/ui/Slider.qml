@@ -153,12 +153,15 @@ Item{
 		id: content
 
 		color: theme.buttonBackgroundColor
-
+		radius: 2
+		smooth: true
 		anchors.fill: parent
 
 		Rectangle{
 			id: barBg
 
+			smooth: true
+			radius: 2
 			anchors.fill: parent
 			color: theme.backgroundColor
 			opacity: 0.5
@@ -175,8 +178,9 @@ Item{
 				topMargin: -1
 				bottomMargin: -1
 			}
+			radius: 2
+			smooth: true
 			color: theme.highlightColor
-			visible: range.position > 0
 			width: range.position
 
 			Behavior on width{ enabled: horizontal ; NumberAnimation{duration: 150} }
@@ -191,16 +195,19 @@ Item{
 
 			border{
 				color: color
-				width: 2
+				width: 4
 			}
 			opacity: 0
+			radius: 1
+			smooth: true
 
 			anchors{
 				verticalCenter: bar.verticalCenter
+				leftMargin: -2
 				left: !seekArea.pressed ? bar.right : undefined
 			}
 
-			x: !seekArea.drag.active ? bar.width : 0
+			x: !seekArea.drag.active ? range.position : 0
 
 			Behavior on opacity{ NumberAnimation{duration: 150} }
 
@@ -237,7 +244,7 @@ Item{
 			hoverEnabled: true
 
 			drag{
-				target: seek
+				//target: seek
 				axis: Drag.XAxis
 				minimumX: 0
 				maximumX: barBg.width
@@ -260,7 +267,9 @@ Item{
 			}
 
 			function xPosition(mouseX){
-				if(mouseX >= 0 && mouseX <= drag.maximumX) seek.x = mouseX
+				if(mouseX > drag.maximumX) seek.x = drag.maximumX
+				else if(mouseX < 0) seek.x = 0
+				else seek.x = mouseX
 
 				if(pressed) {
 					var currentValue = range.valueForPosition(seek.x)
@@ -275,8 +284,9 @@ Item{
 			}
 
 			function yPosition(mouseY){
-
-				if(mouseY >= 0 && mouseY <= drag.maximumY) seek.y = mouseY
+				if(mouseY > drag.maximumY) seek.y = drag.maximumY
+				else if(mouseX < 0) seek.y = 0
+				else seek.y = mouseY
 
 				//invert y axis
 				mouseY = drag.maximumY - mouseY

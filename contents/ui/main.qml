@@ -20,6 +20,7 @@
  */
 
 import QtQuick 1.1
+import org.kde.plasma.core 0.1 as PlasmaCore
 import org.kde.plasma.components 0.1 as PlasmaComponents
 import org.kde.plasma.graphicswidgets 0.1 as PlasmaWidgets
 import org.kde.qtextracomponents 0.1 as QtExtra
@@ -127,6 +128,7 @@ Item {
 				sep.visible = plasmoid.readConfig('separatorVisible')
 				playbackBar.buttonSize = plasmoid.readConfig('buttonSize')
 				plasmoid.resize(minimumWidth, minimumHeight)
+				shortcuts.connectSource("Shortcuts")
 			}
 		)
 
@@ -217,7 +219,6 @@ Item {
 					styleColor: theme.highlightColor
 					horizontalAlignment: Text.AlignHCenter
 					verticalAlignment: Text.AlignVCenter
-
 				}
 
 				PlasmaWidgets.Separator{
@@ -247,8 +248,8 @@ Item {
 			maximumWidth: (vertical ? controlBar.height : controlBar.width)
 			minimumWidth: (vertical ? playbackBar.height : playbackBar.width)
 
-			verticalOffset: iconPopup.width - controlBar.spacing + (playbackBar.flatButtons ? -1 : -7)
-			horizontalOffset: iconPopup.height - controlBar.spacing + (playbackBar.flatButtons ? 0 : -7)
+			verticalOffset: (iconPopup.width + controlBar.spacing)/2 + (playbackBar.flatButtons ? 2 : -1)
+			horizontalOffset: (iconPopup.height + controlBar.spacing)/2 + (playbackBar.flatButtons ? 2 : -1)
 
 			anchors{
 				centerIn: parent
@@ -264,6 +265,25 @@ Item {
 		sourceComponent:
 			if(showNotifications) notification
 			else undefined
+	}
+
+	PlasmaCore.DataSource{
+		id: shortcuts
+
+		engine: 'playbarkeys'
+		//interval: 1000
+
+		connectedSources: ['Shortcuts']
+
+		onNewData: if(data['SourceMpris2'] != undefined) print(data['SourceMpris2'])
+
+		function sourceChanged(source){
+			var serv = serviceForSource('Shortcuts');
+			var op = serv.operationDescription('SetSource');
+			op['source'] = source;
+			serv.startOperationCall(op);
+		}
+		Component.onCompleted: mpris.sourceChanged.connect(sourceChanged)
 	}
 
 }

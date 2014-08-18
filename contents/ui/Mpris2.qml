@@ -30,6 +30,8 @@ DataSource{
 
 	interval: minimumLoad
 
+	connectedSources: sources.length > 1 && sources[0] != '@multiplex' ? [sources[0]] : [""]
+
 
 	property int maximumLoad: 500
 
@@ -40,9 +42,9 @@ DataSource{
 
 	property string previousSource
 
-	property string source: connectedSources[0] != undefined ? connectedSources[0] : ""
+	property string source: connectedSources[0] != undefined ? connectedSources[0] : ''
 
-	property bool sourceActive: hasSource('CanControl') ? data[source]['CanControl'] : false
+	property bool sourceActive: false
 
 
 	property string identity: hasSource('Identity') ? data[source]['Identity'] : "No source"
@@ -77,8 +79,7 @@ DataSource{
 		else identity = "No source"
 	}
 
-	Component.onCompleted: initialConnection = true
-
+	//Component.onCompleted: initialConnection = true
 
 	function hasMetadata(key){
 		if (interval == minimumLoad) return false
@@ -103,22 +104,19 @@ DataSource{
 
 	function nextSource(){
 		for(i = 0; i < sources.length; i++){
-			if(source == sources[i]){
-				if( ++i >= sources.length ){
-					if( sources[0] == '@multiplex' )
-						connect(sources[1])
-					else connect(sources[0])
-				}else if( sources[i] != '@multiplex' )
+			if(connectedSources[0] == sources[i] || connectedSources == "")
+			{
+				if(++i < sources.length && sources[i] != '@multiplex'){
 					connect(sources[i])
-				else
-					connect(sources[0])
+				}else if(++i < sources.length){
+					connect(sources[i])
+				}else if(sources[0] != '@multiplex') connect(sources[0])
 				return
 			}
 		}
 	}
 
 	onNewData: {
-
 		if(interval == maximumLoad)
 			position = data['Position'] /1000
 
@@ -133,17 +131,20 @@ DataSource{
 	}
 
 	onSourceAdded: {
-		if(initialConnection && connectedSources[0] != source && source != '@multiplex') {
-			print("sourceAdded?: "+source)
-			previousSource = connectedSources[0] == undefined ? "" : connectedSources[0]
+		if(initialConnection && source != '@multiplex') {
+			previousSource = connectedSources == "" ? "" : connectedSources[0]
 			connectedSources = [source]
 			initialConnection = false
 		}
 	}
 
 	onSourceRemoved: {
-		connectedSources = [sources[0]]
-		initialConnection = true
+		if(sources.length == 1){
+			sourceActive = false
+			initialConnection = true
+		}
+		if(source == previousSource)
+		nextSource()
 	}
 
 	onSourceConnected: {
@@ -152,12 +153,20 @@ DataSource{
 			previousSource = source
 			sourceChanged(source)
 		}
+		if(source != ''){
+			sourceActive = true
+			initialConnection = false
+		}
 		idty = data[source] != undefined ? data[source]['Identity'] : "No source"
 		Control.setSource(source, idty)
 	}
 
 	onSourceDisconnected: {
 		print("disconnected: "+source)
+		if(sources.length == 1){
+			sourceChanged(source)
+			Control.setSource("", identity)
+		}
 	}
 
 	//onIntervalChanged: print("interval: "+interval)

@@ -31,8 +31,7 @@ Item{
 	property bool isSpotify: mpris.source == 'spotify'
 
 	property bool noSource:
-		mpris.connectedSources[0] == '@multiplex' ||
-		mpris.connectedSources[0] == undefined
+		mpris.connectedSources ==  ""
 
 	property variant idLayout: undefined
 
@@ -104,9 +103,9 @@ Item{
 
 				anchors{
 					leftMargin: 8
-					rightMargin: 10
+					rightMargin: volume.visible ? 10 : 4
 					left: separator.right
-					right: volume.left
+					right: volume.visible ? volume.left : parent.right
 					top: parent.top
 					bottom: playback.top
 				}
@@ -143,7 +142,7 @@ Item{
 					//top: cover.top
 					//bottom: cover.bottom
  					right: parent.right
-					rightMargin: 6
+					//rightMargin: 4
 				}
 			}
 		}
@@ -224,7 +223,6 @@ Item{
 				id: volume
 
 				width: 120
-
 				anchors{
 					rightMargin: 4
 					leftMargin: 8

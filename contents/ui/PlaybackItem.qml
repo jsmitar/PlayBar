@@ -25,7 +25,7 @@ import "plasmapackage:/code/control.js" as Control
 Item{
     id: playbackitem
 
-    property bool playing: source.playbackStatus == 'Playing'? true : false
+    property bool playing: source.playbackStatus == 'Playing'
 
     property bool showStop: plasmoid.readConfig('showStop')
 
@@ -45,11 +45,6 @@ Item{
 
     signal stop()
 
-	//property action actionplaypause;
-	//action{ id: action_playpause }
-
-	//action_playpause.shortcut: Qt.Key_MediaPlay
-
 	function showStopChanged(source){
 		if( source == undefined ) source = playbackitem.source.source
 		if( source != 'spotify' ) showStop = plasmoid.readConfig('showStop')
@@ -57,10 +52,9 @@ Item{
 	}
 
     onPlayPause: {
-
 		if(source.source == 'spotify' ) {
-			if(playing) Control.startOperation('Play')
-			else Control.startOperation('PlayPause')
+			Control.startOperation('PlayPause')
+			return
 		}
 		if(!playing) Control.startOperation('Play')
 		else Control.startOperation('PlayPause')

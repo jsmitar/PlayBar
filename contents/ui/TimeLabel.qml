@@ -58,7 +58,7 @@ Item{
         if (negative && topTime) sec = Math.abs(topTime/1000 - sec)
         min = parseInt(sec/60)
         sec = parseInt(sec - min*60)
-        sec = (sec < 10 && sec > -10) ? '0'+sec : sec
+        sec = parseInt((sec < 10 && sec > -10) ? '0'+sec : sec)
 		time.min = min
 		time.sec = sec
     }

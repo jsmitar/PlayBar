@@ -12,7 +12,7 @@ function setSource(sourceName, identity){
 
 	source = sourceName
 	serv = service("mpris2", sourceName)
-	if(sourceName != '@multiplex') setActions(sourceName, identity)
+	if(sourceName != "" ) setActions(sourceName, identity)
 	else removeActions()
 }
 
@@ -74,7 +74,7 @@ function removeActions(){
 	plasmoid.removeAction('sep1')
 }
 
-print("addons: " + plasmoid.listAddons("org.kde.plasma.javascript-addons-example")[0].id)
+//print("addons: " + plasmoid.listAddons("org.kde.plasma.javascript-addons-example")[0].id)
 
 function controlBarWheelEvent(wheel){}
 

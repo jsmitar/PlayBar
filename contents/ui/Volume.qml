@@ -144,7 +144,7 @@ Item{
                     else level[3]
 
                 onClicked: {
-					if(volume != 0){
+					if(!muted){
 						volumePrev = volume
 						Control.setVolume(0)
 					} else Control.setVolume(volumePrev)

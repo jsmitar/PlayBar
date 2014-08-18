@@ -49,13 +49,10 @@ Item{
 	}
 
 	function sourceNotify(){
-		var text
-		if( mpris.source.match('vlc') )
-			text = "VLC"
+		if( mpris.identity.match('vlc|VLC') )
+			title.text = "VLC"
 		else
-			text = mpris.identity
-
-		title.text = text
+			title.text = mpris.identity
 		fadeIn.start()
 	}
 
@@ -79,6 +76,10 @@ Item{
 	Component.onCompleted: {
 		Control.sourceNotify = sourceNotify
 		Control.controlBarWheelNotify = controlBarWheelNotify
+		plasmoid.addEventListener('configChanged', function() {
+			title.font.pointSize = plasmoid.readConfig('buttonSize')/2
+		})
+		sourceNotify()
 	}
 
 	Rectangle{
@@ -119,7 +120,7 @@ Item{
 
 		font{
 			weight: Font.DemiBold
-			pointSize: 10
+			pointSize: plasmoid.readConfig('buttonSize')/2
 		}
 
 		Behavior on text{

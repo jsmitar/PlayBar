@@ -125,7 +125,7 @@ Item{
 	Image{
 		id: cover
 
-		source: coverArt.source.artUrl
+		source: Qt.resolvedUrl(coverArt.source.artUrl)
 		fillMode: Image.PreserveAspectFit
 		sourceSize: Qt.size(size, size)
 		anchors.fill: bg
@@ -135,7 +135,7 @@ Item{
 
 		onStatusChanged: {
 			if(status == Image.Error)
-				print(coverArt.source.artUrl)
+				print("Err: " +coverArt.source.artUrl)
 		}
 	}
 
