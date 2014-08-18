@@ -271,39 +271,36 @@ Item{
 				else if(mouseX < 0) seek.x = 0
 				else seek.x = mouseX
 
-				if(pressed) {
-					var currentValue = range.valueForPosition(seek.x)
-					if(currentValue / intervalDragCall != valueForPosition / intervalDragCall)
-					{
-						valueForPosition = currentValue
-						sliderDragged()
-					}
+				var currentValue = range.valueForPosition(seek.x)
+				if(currentValue / intervalDragCall != valueForPosition / intervalDragCall)
+				{
+					valueForPosition = currentValue
+					sliderDragged()
 				}
 
-				if (pressAndChange && pressed) valueChanged(range.valueForPosition(seek.x))
+				if (pressAndChange) valueChanged(range.valueForPosition(seek.x))
 			}
 
 			function yPosition(mouseY){
 				if(mouseY > drag.maximumY) seek.y = drag.maximumY
-				else if(mouseX < 0) seek.y = 0
+				else if(mouseY < 0) seek.y = 0
 				else seek.y = mouseY
 
 				//invert y axis
 				mouseY = drag.maximumY - mouseY
 
-				if(pressed) {
-					var currentValue = range.valueForPosition(content.height - seek.y)
-					if(currentValue / intervalDragCall != valueForPosition / intervalDragCall)
-					{
-						valueForPosition = currentValue
-						sliderDragged()
-					}
+				var currentValue = range.valueForPosition(content.height - seek.y)
+				if(currentValue / intervalDragCall != valueForPosition / intervalDragCall)
+				{
+					valueForPosition = currentValue
+					sliderDragged()
 				}
 
-				if (pressAndChange && pressed) valueChanged(range.valueForPosition(content.height - seek.y))
+				if (pressAndChange) valueChanged(range.valueForPosition(content.height - seek.y))
 			}
 
 			onPositionChanged: {
+				if(!pressed) return
 				if(orientation == QtHorizontal) xPosition(mouseX)
 				else yPosition(mouseY)
 			}
