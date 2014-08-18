@@ -1,11 +1,9 @@
-PlayBar
-=======
+#PlayBar
 MPRIS2 client, written in QML for Plasma KDE
 
 
-Installation
-============
-Remember to install the development libraries for KDE _libkde-devel_
+##Installation
+Remember to install the development libraries for __KDE__
 
 Create a build directory and then enter it.
 ```
