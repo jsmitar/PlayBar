@@ -161,30 +161,44 @@ Item {
 	Flow{
 		id: controlBar
 
-		spacing: sep.visible ? 3 : 5
+		spacing: 4
 
 		flow: vertical ? Flow.TopToBottom : Flow.LeftToRight
 
-		anchors.centerIn: parent
+		anchors{
+			centerIn: parent
+		}
+
+		Item{
+			children: [iconPopup, sep]
+			width: vertical ? playbackBar.width : height
+			height: vertical ? width : playbackBar.height
+		}
 
 		PopupButton{
 			id: iconPopup
 
-			width: vertical ? playbackBar.width : implicitWidth
-			height: vertical ? implicitHeight : playbackBar.height
-
-			iconSource: main.popupOpen ? opened : closed
+			elementId: main.popupOpen ? opened : closed
 			onClicked: { main.popupOpen ? popup.close(): popup.open(); }
 
-			size: playbackBar.flatButtons ? playbackBar.buttonSize : playbackBar.buttonSize - 3
+			anchors.centerIn: parent
+
+			size: playbackBar.flatButtons ? playbackBar.buttonSize - 6 : playbackBar.buttonSize - 10
 		}
 
 		PlasmaWidgets.Separator{
 			id: sep
 
 			orientation: vertical ? Qt.Horizontal : Qt.Vertical
-			height: vertical ? implicitHeight : iconPopup.height
-			width: vertical ? iconPopup.width : implicitWidth
+
+			anchors{
+				top: vertical ? undefined : iconPopup.top
+				bottom: vertical ? parent.bottom : iconPopup.bottom
+				left: vertical ? iconPopup.left : undefined
+				right: vertical ? iconPopup.right : parent.right
+				leftMargin: vertical ? 0 : controlBar.spacing/2
+				topMargin: vertical ? controlBar.spacing/2 : 0
+			}
 		}
 
 		PlaybackBar{
@@ -230,7 +244,6 @@ Item {
 						right: parent.right
 					}
 				}
-
 			}
 
 			Layout{
