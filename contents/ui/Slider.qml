@@ -152,7 +152,7 @@ Item{
 	Rectangle{
 		id: content
 
-		color: theme.buttonBackgroundColor
+		color: theme.textColor
 		radius: 2
 		smooth: true
 		anchors.fill: parent

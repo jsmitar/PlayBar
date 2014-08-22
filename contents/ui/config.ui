@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>460</width>
-    <height>572</height>
+    <width>454</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -30,8 +30,8 @@
     <widget class="QGroupBox" name="groupBox_3">
      <property name="font">
       <font>
-       <weight>50</weight>
-       <bold>false</bold>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="title">
@@ -74,6 +74,12 @@
         </item>
         <item row="0" column="1">
          <widget class="QCheckBox" name="kcfg_showStop">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
@@ -106,6 +112,12 @@
         </item>
         <item row="1" column="1">
          <widget class="QCheckBox" name="kcfg_windowFlagDialog">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="toolTip">
            <string>The window behaves like a dialogue, correcting an 
 annoying behavior. If you use CairoDock or Plank 
@@ -141,9 +153,9 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="font">
       <font>
-       <weight>50</weight>
+       <weight>75</weight>
        <italic>false</italic>
-       <bold>false</bold>
+       <bold>true</bold>
       </font>
      </property>
      <property name="title">
@@ -165,6 +177,12 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
           </property>
           <property name="inputMethodHints">
            <set>Qt::ImhNone</set>
@@ -191,6 +209,9 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
            <bool>true</bool>
           </property>
           <property name="suffix">
+           <string> pixels</string>
+          </property>
+          <property name="prefix">
            <string/>
           </property>
           <property name="minimum">
@@ -222,6 +243,12 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
         </item>
         <item row="0" column="1">
          <widget class="QCheckBox" name="kcfg_flatButtons">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -245,6 +272,12 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
         </item>
         <item row="2" column="1">
          <widget class="QCheckBox" name="kcfg_showNotifications">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -274,6 +307,12 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
         </item>
         <item row="3" column="1">
          <widget class="QCheckBox" name="kcfg_separatorVisible">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -281,6 +320,12 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_9">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Size of buttons: </string>
           </property>
@@ -314,8 +359,8 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
     <widget class="QGroupBox" name="groupBox">
      <property name="font">
       <font>
-       <weight>50</weight>
-       <bold>false</bold>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="layoutDirection">
@@ -341,6 +386,12 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
         </property>
         <item row="0" column="1">
          <widget class="QCheckBox" name="kcfg_opaqueIcons">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="toolTip">
            <string/>
           </property>

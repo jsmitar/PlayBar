@@ -20,15 +20,27 @@
  */
 
 import QtQuick 1.1
+//import org.kde.plasma.core 0.1 as PlasmaCore
+
 
 IconWidget{
 	id: iconPopup
 
-	property variant icons: [ "go-up", "go-down", "go-next", "go-previous" ]
+	svg: update()
+
+	elementId: closed
+
+	property variant icons: [ "up-arrow", "down-arrow", "right-arrow", "left-arrow" ]
 
 	property string opened: icons[0]
 
 	property string closed: icons[1]
+
+	function update(){
+		if(plasmoid.readConfig("opaqueIcons") == true)
+			return Svg(plasmoid.readConfig("arrows-opaque"))
+		else return Svg(plasmoid.readConfig("arrows-clear"))
+	}
 
 	Component.onCompleted:{
 		function locationChanged(){
@@ -54,6 +66,7 @@ IconWidget{
 			}
 		}
 
+		plasmoid.addEventListener('configChanged', function(){svg = update()} )
 		plasmoid.locationChanged.connect(locationChanged)
 		locationChanged()
 	}

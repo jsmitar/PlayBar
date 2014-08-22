@@ -45,7 +45,9 @@ Item{
 
 	Component.onCompleted: {
 		for(i = 0; i < 5; i++){
-			plasmoid.addEventListener('configChanged', ratingItems.itemAt(i).update)
+			plasmoid.addEventListener('configChanged', function(){
+				ratingItems.itemAt(i).Svg = ratingItems.itemAt(i).update()
+			})
 			source.ratingChanged.connect(ratingItems.itemAt(i).setRating)
 		}
 	}
@@ -56,19 +58,15 @@ Item{
         PlasmaCore.SvgItem{
 			clip: true
 
-			svg: plasmoid.readConfig("opaqueIcons") == true ?
-				Svg(plasmoid.readConfig("rating-opaque"))
-				: Svg(plasmoid.readConfig("rating"))
+			svg: update()
             elementId: svgId['low']
             implicitWidth: sizeIcon
             implicitHeight: sizeIcon
 
 			function update(){
-				if(plasmoid.readConfig("opaqueIcons") == true){
-					  svg = Svg(plasmoid.readConfig("rating-opaque"))
-				}else  svg = Svg(plasmoid.readConfig("rating"))
-
-				svgChanged()
+				if(plasmoid.readConfig("opaqueIcons") == true)
+					  return Svg(plasmoid.readConfig("rating-opaque"))
+				else return Svg(plasmoid.readConfig("rating-clear"))
 			}
 
             function setRating() {
@@ -80,6 +78,12 @@ Item{
                 else
                     elementId = svgId['low']
             }
+			Component.onCompleted: {
+				plasmoid.addEventListener('configChanged', function(){
+					svg = update()
+					setRating()
+				})
+			}
 
 			Component.onDestruction: {
 				source.ratingChanged.disconnect(setRating)

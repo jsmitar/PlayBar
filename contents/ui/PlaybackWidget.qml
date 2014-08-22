@@ -26,7 +26,7 @@ import "plasmapackage:/ui/" as PlayBar
 PlaybackItem{
     id: playbackWidget
 
-	property int buttonSize: 24
+	property int buttonSize: 26
 
 	property alias spacing: content.spacing
 
@@ -40,106 +40,50 @@ PlaybackItem{
 		model.itemAt(2).clicked.connect(stop)
 		model.itemAt(3).clicked.connect(next)
 	}
+	Component.onDestruction: {
+		model.itemAt(0).clicked.disconnect(previous)
+		model.itemAt(1).clicked.disconnect(playPause)
+		model.itemAt(2).clicked.disconnect(stop)
+		model.itemAt(3).clicked.disconnect(next)
+	}
 
 	ListModel{
 		id: playmodel
 		ListElement{
-			idIcon: "skip-backward"
-			idContour: "contour-skip"
+			idIcon: "media-skip-backward"
 		}
 		ListElement{
-			idIcon: "playback-start"
-			idContour: "contour-playback"
+			idIcon: "media-playback-start"
 		}
 		ListElement{
-			idIcon: "playback-stop"
-			idContour: "contour-playback"
+			idIcon: "media-playback-stop"
 		}
 		ListElement{
-			idIcon: "skip-forward"
-			idContour: "contour-skip"
+			idIcon: "media-skip-forward"
 		}
 	}
 
 	Component{
 		id: buttonDelegate
 
-		Item{
-			width: childrenRect.width
-			height: childrenRect.height
+		IconWidget{
+
+			svg: update()
+			iconSource: idIcon
+			size: buttonSize
 
 			anchors.verticalCenter: parent.verticalCenter
-
-			property alias elementId: media.elementId
-
- 			property variant image:
-				plasmoid.readConfig("opaqueIcons") == true ?
-					Svg(plasmoid.readConfig("media-opaque"))
-				: Svg(plasmoid.readConfig("media"))
-
-			Behavior on scale { SequentialAnimation{
-					NumberAnimation { to: 0.9; duration: 150 }
-					NumberAnimation { to: 1;   duration: 100 }
-				}
-			}
-
-			signal clicked()
 
 			visible: index == 2 ? showStop : true
 
 			function update(){
 				if(plasmoid.readConfig("opaqueIcons") == true)
-					image = Svg(plasmoid.readConfig("media-opaque"))
-				else image = Svg(plasmoid.readConfig("media"))
-
-				contour.svgChanged()
-				media.svgChanged()
+					return Svg(plasmoid.readConfig("media-opaque"))
+				else return Svg(plasmoid.readConfig("media-clear"))
 			}
 
 			Component.onCompleted: {
-				mouseArea.clicked.connect(clicked)
-				plasmoid.addEventListener('configChanged', update)
-			}
-
-			PlasmaCore.SvgItem{
-				id: contour
-
-				svg: image
-				elementId: idContour
-				smooth: true
-
-				property int sizeExtra: (index == 1 || index == 2) ? 3 : 0
-
-				width: buttonSize + sizeExtra
-				height: buttonSize + sizeExtra
-
-			}
-
-			PlasmaCore.SvgItem{
-				id: media
-
-				svg: image
-				elementId: idIcon
-				smooth: true
-
-				property int sizeExtra: (index == 1 || index == 2) ? 1 : 0
-
-				width: buttonSize / 2 + sizeExtra
-				height: buttonSize / 2 + sizeExtra
-
-				anchors {
-					centerIn: contour
-					horizontalCenterOffset: !playing && index == 1 ? 1 : 0
-				}
-
-			}
-
-			MouseArea{
-				id: mouseArea
-				anchors.fill: parent
-
-				onPressed: parent.scale = 0.9
-				onReleased: parent.scale = 1
+				plasmoid.addEventListener('configChanged', function(){svg = update()} )
 			}
 		}
 	}
@@ -155,7 +99,7 @@ PlaybackItem{
 				when: playing
 				PropertyChanges{
 					target: model.itemAt(1)
-					elementId: "playback-pause"
+					elementId: "media-playback-pause"
 				}
 			}
 		]

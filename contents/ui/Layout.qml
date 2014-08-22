@@ -134,15 +134,11 @@ Item{
 				visible: !isSpotify
 
 				width: 16
-				height: cover.height - 8
+				height: cover.height - 6
 
 				anchors{
  					verticalCenter: cover.verticalCenter
-					verticalCenterOffset: 1
-					//top: cover.top
-					//bottom: cover.bottom
  					right: parent.right
-					//rightMargin: 4
 				}
 			}
 		}

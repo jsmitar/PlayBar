@@ -127,7 +127,8 @@ Item{
             IconWidget{
                 id: icon
 
-                size: visible ? 22 : 0
+				svg: update()
+                size: visible ? 24 : 0
 
 				anchors.verticalCenter: slider.verticalCenter
                 property variant level: [
@@ -137,7 +138,21 @@ Item{
 
 				property real volumePrev: 0
 
-                source:
+				function update(){
+					if(!visible) return null
+					if(plasmoid.readConfig("opaqueIcons") == true)
+						return Svg(plasmoid.readConfig("audio-opaque"))
+					else return Svg(plasmoid.readConfig("audio-clear"))
+				}
+
+				Component.onCompleted: {
+					plasmoid.addEventListener('configChanged', function(){
+						svg = update()
+						svgChanged()
+					})
+				}
+
+                elementId:
                     if (muted) level[0]
                     else if (volume <= 0.3) level[1]
                     else if (volume <= 0.6) level[2]

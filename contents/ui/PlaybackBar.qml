@@ -52,12 +52,26 @@ PlaybackItem{
         formFactorChanged()
         plasmoid.formFactorChanged.connect(formFactorChanged)
 
+		function connectMediaActions(){
+			model.itemAt(0).clicked.connect(previous)
+			model.itemAt(1).clicked.connect(playPause)
+			model.itemAt(2).clicked.connect(stop)
+			model.itemAt(3).clicked.connect(next)
+		}
+
+		function disconnectMediaActions(){
+			model.itemAt(0).clicked.disconnect(previous)
+			model.itemAt(1).clicked.disconnect(playPause)
+			model.itemAt(2).clicked.disconnect(stop)
+			model.itemAt(3).clicked.disconnect(next)
+		}
+		connectMediaActions()
+
 		plasmoid.addEventListener('configChanged', function(){
-				flatButtons = plasmoid.readConfig('flatButtons')
-				model.itemAt(0).clicked.connect(previous)
-				model.itemAt(1).clicked.connect(playPause)
-				model.itemAt(2).clicked.connect(stop)
-				model.itemAt(3).clicked.connect(next)
+				if(plasmoid.readConfig('flatButtons') != flatButtons){
+					flatButtons = !flatButtons
+					connectMediaActions()
+				}
 				if(playing) buttons.playingState()
 				else buttons.pausedState()
 			}
@@ -96,16 +110,29 @@ PlaybackItem{
         id: iconWidgetDelegate
 
         IconWidget{
+			svg: update()
             iconSource: icon
             visible: index == 2 ? showStop : true
 			size: buttonSize
+
+			function update(){
+				if(plasmoid.readConfig("opaqueIcons") == true)
+					return Svg(plasmoid.readConfig("media-opaque-bar"))
+				else return Svg(plasmoid.readConfig("media-clear-bar"))
+			}
+
+			Component.onCompleted:{
+				plasmoid.addEventListener('configChanged', function(){
+					svg = update(); svgChanged(); elementIdChanged();
+				})
+			}
         }
     }
 
     Flow {
         id: buttons
 
-        spacing: flatButtons ? 2 : -1
+        spacing: flatButtons ? 5 : -1
 		flow: vertical ? Flow.TopToBottom : Flow.LeftToRight
 
 		function playingState(){
