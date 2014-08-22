@@ -9,6 +9,7 @@ build/
 *.xml~
 *.js~
 *.desktop~
+*.kate-swp
 .~*
 
 # KDevelop Project files
