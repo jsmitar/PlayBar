@@ -23,14 +23,12 @@ import QtQuick 1.1
 import org.kde.plasma.core 0.1
 
 
-IconItem {
+SvgItem {
 	id: iconWidget
 
-	property string iconSource
+	property alias iconSource: iconWidget.elementId
 
 	property int size: theme.smallIconSize + 3
-
-	source: iconSource
 
 	implicitWidth: size
 
@@ -42,17 +40,23 @@ IconItem {
 
 	Component.onCompleted: mouseArea.clicked.connect(clicked)
 
-	Behavior on scale { SequentialAnimation{
-			NumberAnimation { to: 0.9; duration: 150 }
-			NumberAnimation { to: 1;   duration: 100 }
-		}
+	SequentialAnimation on scale{
+		id: animA
+		running: false
+		alwaysRunToEnd: true
+		NumberAnimation { to: 0.9; duration: 150 }
+	}
+	SequentialAnimation on scale{
+		id: animB
+		running: scale == 0.9 && !mouseArea.pressed
+		alwaysRunToEnd: true
+		NumberAnimation { to: 1; duration: 150 }
 	}
 
 	MouseArea{
 		id: mouseArea
 		anchors.fill: parent
 
-		onPressed:  parent.scale = 0.8
-		onReleased: parent.scale = 1
+		onPressed:  animA.start()
 	}
 }
