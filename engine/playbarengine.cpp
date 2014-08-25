@@ -57,8 +57,7 @@ void PlayBarEngine::init()
     //updateSourceEvent("Shortcuts");
 }
 
-
-KAction* PlayBarEngine::createAction(const char* name, Qt::Key key)
+KAction* PlayBarEngine::createAction(const char* name)
 {
     QString text;
     if (strcmp(name, "PlayPause") == 0)
@@ -68,6 +67,13 @@ KAction* PlayBarEngine::createAction(const char* name, Qt::Key key)
     KAction* action = new KAction("PlayBar: "+text, 0);
     action->setObjectName(name);
     action->setParent(mediaActions);
+    action->setGlobalShortcut(KShortcut());
+    return action;
+}
+
+KAction* PlayBarEngine::createAction(const char* name, Qt::Key key)
+{
+    KAction* action = createAction(name);
     action->setGlobalShortcut(KShortcut(key));
     return action;
 }
@@ -92,6 +98,10 @@ bool PlayBarEngine::sourceRequestEvent(const QString& source)
         createAction("PlayPause", Qt::Key_MediaTogglePlayPause);
     KAction* next =
         createAction("Next", Qt::Key_MediaNext);
+    KAction* open =
+        createAction("Open Media Player");
+    KAction* quit =
+        createAction("Quit Media Player");
 
     mediaActions->addAction("Play", play);
     mediaActions->addAction("Pause", pause);
@@ -99,6 +109,8 @@ bool PlayBarEngine::sourceRequestEvent(const QString& source)
     mediaActions->addAction("Stop", stop);
     mediaActions->addAction("Previous", previous);
     mediaActions->addAction("Next", next);
+    mediaActions->addAction("Open", open);
+    mediaActions->addAction("Quit", quit);
     mediaActions->setConfigGlobal(true);
     mediaActions->setConfigGroup("PlayBar");
 
@@ -108,6 +120,8 @@ bool PlayBarEngine::sourceRequestEvent(const QString& source)
     connect(stop, SIGNAL(triggered(bool)), this, SLOT(stop()));
     connect(next, SIGNAL(triggered(bool)), this, SLOT(next()));
     connect(previous, SIGNAL(triggered(bool)), this, SLOT(previous()));
+    connect(open, SIGNAL(triggered(bool)), this, SLOT(open()));
+    connect(quit, SIGNAL(triggered(bool)), this, SLOT(quit()));
 
     return updateSourceEvent(source);
 }
@@ -175,6 +189,17 @@ void PlayBarEngine::previous()
 {
     startOperation("Previous");
 }
+
+void PlayBarEngine::open()
+{
+    startOperation("Raise");
+}
+
+void PlayBarEngine::quit()
+{
+    startOperation("Quit");
+}
+
 
 QString PlayBarEngine::mpris2Source;
 

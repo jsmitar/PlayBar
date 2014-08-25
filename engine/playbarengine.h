@@ -55,10 +55,14 @@ private slots:
     void stop();
     void next();
     void previous();
+    void open();
+    void quit();
 
 private:
     void startOperation(const QString& name);
     KAction* createAction(const char* name, Qt::Key key);
+    KAction* createAction(const char* name);
+
     inline void updatePS(){
         data = mpris2->query(mpris2Source);
         playing = data.value("PlaybackStatus", "") == "Playing";
