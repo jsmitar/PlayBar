@@ -25,7 +25,7 @@ import "plasmapackage:/code/control.js" as Control
 Item{
     id: playbackitem
 
-    property bool playing: source.playbackStatus == 'Playing'
+    property bool playing: mpris.playbackStatus == 'Playing'
 
     property bool showStop: plasmoid.readConfig('showStop')
 
@@ -34,8 +34,6 @@ Item{
     property real spacing: -2
 
     property int buttonSize: 22
-
-	property Mpris2 source
 
     signal playPause()
 
@@ -46,13 +44,14 @@ Item{
     signal stop()
 
 	function showStopChanged(source){
-		if( source == undefined ) source = playbackitem.source.source
-		if( source != 'spotify' ) showStop = plasmoid.readConfig('showStop')
+		//if( source == undefined ) source = playbackitem.source.source
+		if( source != 'spotify' )
+			showStop = plasmoid.readConfig('showStop')
 		else showStop = false
 	}
 
     onPlayPause: {
-		if(source.source == 'spotify' ) {
+		if(mpris.source == 'spotify' ) {
 			Control.startOperation('PlayPause')
 			return
 		}
@@ -64,14 +63,14 @@ Item{
 
     onNext: Control.startOperation('Next')
 
-    onStop: if(source.playbackStatus != "Stopped") Control.startOperation('Stop')
+    onStop: if(mpris.playbackStatus != "Stopped") Control.startOperation('Stop')
 
 	Component.onCompleted: {
-		source.sourceChanged.connect(showStopChanged)
+		mpris.sourceChanged.connect(showStopChanged)
 		plasmoid.addEventListener('configChanged', showStopChanged)
 	}
 
 	Component.onDestruction: {
-		source.sourceChanged.disconnect(showStopChanged)
+		mpris.sourceChanged.disconnect(showStopChanged)
 	}
 }

@@ -26,9 +26,7 @@ import "plasmapackage:/code/control.js" as Control
 Item{
     id: ratingItem
 
-	property Mpris2 source
-
-    property real rating: source.userRating
+    property real rating: mpris.userRating
 
     property int sizeIcon: 18
 
@@ -48,10 +46,9 @@ Item{
 			plasmoid.addEventListener('configChanged', function(){
 				ratingItems.itemAt(i).Svg = ratingItems.itemAt(i).update()
 			})
-			source.ratingChanged.connect(ratingItems.itemAt(i).setRating)
+			mpris.ratingChanged.connect(ratingItems.itemAt(i).setRating)
 		}
 	}
-
 
     Component{
         id: svgDelegate
@@ -78,6 +75,7 @@ Item{
                 else
                     elementId = svgId['low']
             }
+
 			Component.onCompleted: {
 				plasmoid.addEventListener('configChanged', function(){
 					svg = update()
@@ -86,7 +84,7 @@ Item{
 			}
 
 			Component.onDestruction: {
-				source.ratingChanged.disconnect(setRating)
+				mpris.ratingChanged.disconnect(setRating)
 			}
         }
     }

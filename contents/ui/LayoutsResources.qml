@@ -18,15 +18,6 @@ Component{
 		width: childrenRect.width + 8
 		height: childrenRect.height
 
-// 		Component.onCompleted: {
-// 			playback.source = mpris
-// 			seek.source = layout.mpris
-// 			cover.source = layout.mpris
-// 			info.source = layout.mpris
-// 			volume.source = layout.mpris
-// 			rating.source = layout.mpris
-// 		}
-
 		Flow{
 			id: headCover
 			spacing: 8

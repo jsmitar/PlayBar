@@ -26,13 +26,15 @@ import "plasmapackage:/ui/" as PlayBar
 Item{
     id: trackInfo
 
-	property Mpris2 source
-
 	property alias widthLabelArtist: artist.width
 
 	property alias widthLabelAlbum: album.width
 
 	property alias contentHeight: artist.height
+
+	property alias titleFontWeight: title.font.weight
+
+	property int albumArtistPointsize: 10
 
 	implicitHeight: content.height
 
@@ -46,11 +48,11 @@ Item{
 		Label{
 			id: title
 
-			text: source.title
+			text: mpris.title
 			wrapMode: Text.WrapAnywhere
 			elide: Text.ElideRight
 			maximumLineCount: 1
-			visible: source.title != ""
+			visible: mpris.title != ""
 
 			font.pointSize: 14
 
@@ -112,12 +114,13 @@ Item{
 		Label{
 			id: artist
 
-			text: i18nc("What artist is this track by", "By %1",  source.artist)
+			text: i18nc("What artist is this track by", "By %1",  mpris.artist)
+
 			wrapMode: Text.WrapAnywhere
 			elide: Text.ElideRight
 			maximumLineCount: 1
-			font.pointSize: 10
-			visible: source.artist != ""
+			font.pointSize: albumArtistPointsize
+			visible: mpris.artist != ""
 
 			height: 12
 			width: content.width
@@ -169,12 +172,14 @@ Item{
 		Label{
 			id: album
 
-			text:  i18nc("What album is this track on", "On %1", source.album)
+			text:  i18nc("What album is this track on", "On %1", mpris.album)
 			wrapMode: Text.WrapAnywhere
 			elide: Text.ElideRight
 			maximumLineCount: 1
-			font.pointSize: 10
-			visible: source.album != ""
+
+			font.pointSize: albumArtistPointsize
+
+			visible: mpris.album != ""
 
 			width: content.width
 
@@ -213,6 +218,7 @@ Item{
 					ScriptAction{ script: album.normalState() }
 				}
 			}
+
 			MouseArea{
 				acceptedButtons: Qt.NoButton
 				anchors.fill: parent

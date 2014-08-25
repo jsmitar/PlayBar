@@ -21,6 +21,7 @@
 
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
+import "plasmapackage:/code/control.js" as Control
 
 Item{
 
@@ -39,12 +40,7 @@ Item{
 
 	property int sec: 0
 
-	property bool stopTimeAnimation: false
-
-// 	Behavior on sec{
-// 		enabled: stopTimeAnimation
-// 		NumberAnimation{ duration: 50 }
-// 	}
+	property alias autoTimeTrigger: timer.running
 
     implicitWidth: label.implicitWidth
 
@@ -52,7 +48,7 @@ Item{
 
     signal timeChanged()
 
-    function timetoMSS(){
+    onTimeChanged: {
         var min
         var sec = currentTime/1000
         if (negative && topTime) sec = Math.abs(topTime/1000 - sec)
@@ -63,15 +59,13 @@ Item{
     }
 
 	Timer{
-		interval: 250
+		id: timer
+
+		interval: 300
 		repeat: true
 		running: true
-		onTriggered: timetoMSS()
+		onTriggered: timeChanged()
 	}
-
-    Component.onCompleted: {
-        timeChanged.connect(timetoMSS)
-    }
 
 	Label{
         id: label
@@ -97,7 +91,7 @@ Item{
             if (!exited || containsMouse ){
                 negative = !negative
 				plasmoid.writeConfig('timeNegative', negative)
-                timetoMSS()
+                timeChanged()
             }
         }
     }

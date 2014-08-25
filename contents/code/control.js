@@ -6,6 +6,8 @@ var identity
 var icon
 
 var currentVolume = 0
+var openedPopup = false
+
 
 function setSource(sourceName, identity){
 	if(sourceName == source) return

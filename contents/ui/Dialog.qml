@@ -43,6 +43,7 @@
 import QtQuick 1.1
 import org.kde.plasma.core 0.1 as PlasmaCore
 import org.kde.plasma.components 0.1
+import "plasmapackage:/code/control.js" as Control
 import "private/AppManager.js" as Utils
 import "private" as Private
 
@@ -123,6 +124,8 @@ Item {
 			dialogMainItem.height = dialogLayout.height
         else if(plasmoid.location == LeftEdge)
 			dialogMainItem.width = dialogLayout.width
+
+		Control.openedPopup = true
     }
 
 
@@ -131,6 +134,7 @@ Item {
      */
     function close() {
         internalLoader.dialog.visible = false
+		Control.openedPopup = false
     }
 
     Loader {

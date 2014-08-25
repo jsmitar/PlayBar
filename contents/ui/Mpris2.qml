@@ -37,6 +37,8 @@ DataSource{
 
 	property int minimumLoad: 1500
 
+	property bool isMaximumLoad: interval == maximumLoad
+
 	property bool initialConnection: true
 
 
@@ -117,12 +119,16 @@ DataSource{
 	}
 
 	onNewData: {
-		if(interval == maximumLoad)
-			position = data['Position'] /1000
+		if(!isMaximumLoad) return
+
+		position = data['Position'] /1000
 
 		if(hasMetadata('userRating') && data['Metadata']['xesam:userRating'] != userRating ){
 			userRating = data['Metadata']['xesam:userRating'] != undefined ?
 						 data['Metadata']['xesam:userRating'] : 0
+			ratingChanged()
+		}else if(playbackStatus == 'Stopped' && userRating != 0){
+			userRating = 0
 			ratingChanged()
 		}
 

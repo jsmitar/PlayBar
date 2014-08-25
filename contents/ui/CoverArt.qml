@@ -26,8 +26,6 @@ import org.kde.plasma.core 0.1 as PlasmaCore
 Item{
 	id: coverArt
 
-	property Mpris2 source
-
 	property int size: 80
 
 	implicitWidth: size + 8
@@ -87,7 +85,7 @@ Item{
 		color: theme.textColor
 		width: size
 		height: size
-		radius: 1
+		radius: 2
 		clip: true
 
 		anchors.centerIn: parent
@@ -125,7 +123,7 @@ Item{
 	Image{
 		id: cover
 
-		source: Qt.resolvedUrl(coverArt.source.artUrl)
+		source: Qt.resolvedUrl(mpris.artUrl)
 		fillMode: Image.PreserveAspectFit
 		sourceSize: Qt.size(size, size)
 		anchors.fill: bg
@@ -135,7 +133,7 @@ Item{
 
 		onStatusChanged: {
 			if(status == Image.Error)
-				print("Err: " +coverArt.source.artUrl)
+				print("Err: " +mpris.artUrl)
 		}
 	}
 

@@ -27,9 +27,7 @@ import "plasmapackage:/code/control.js" as Control
 Item{
     id: volumeWidget
 
-	property Mpris2 source
-
-	property real volume: source.volume
+	property real volume: mpris.volume
 
 	property bool muted: volume == 0 ? true : false
 
@@ -71,9 +69,15 @@ Item{
                 }
                 PropertyChanges{
                     target: label
-                    width: slider.height * 1.4
+                    width: 32
+					height: sliderWidget.height
                     horizontalAlignment: Text.AlignLeft
                 }
+				PropertyChanges{
+					target: inline
+					children: [label, sliderWidget]
+					spacing: 8
+				}
             }
         ]
 
@@ -88,8 +92,12 @@ Item{
             font.weight: Font.DemiBold
 			width: visible ? implicitWidth : 0
 
-			Component.onCompleted: source.volumeChanged.connect(setLabel)
+			Component.onCompleted: mpris.volumeChanged.connect(setLabel)
         }
+
+		Row{
+			id: inline
+		}
 
         Row{
             id: sliderWidget
@@ -98,7 +106,7 @@ Item{
             Slider{
                 id: slider
 
-                maximumValue: if(source.source.match('vlc.*')) 1.25 ; else 1
+                maximumValue: if(mpris.source.match('vlc.*')) 1.25 ; else 1
 
 				value: volume
 				pressAndChange: true

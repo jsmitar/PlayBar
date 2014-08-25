@@ -74,13 +74,10 @@ Item{
 		PropertyChanges{
 			target: bar
 			height: range.position
-			width: 0
 
 			anchors{
 				topMargin: 0
 				bottomMargin: 0
-				//leftMargin: -1
-				//rightMargin: -1
 			}
 		}
 		AnchorChanges{
@@ -218,6 +215,8 @@ Item{
 			id: wheelMouse
 
 			enabled: false
+			visible: enabled
+
 			height: 30
 			anchors{
 				left: parent.left

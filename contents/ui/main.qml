@@ -204,8 +204,6 @@ Item {
 		PlaybackBar{
 			id: playbackBar
 
-			source: mpris
-
 			buttonSize: plasmoid.readConfig('buttonSize')
 		}
 
@@ -218,37 +216,13 @@ Item {
 
 			Component.onCompleted: contentItem.layoutChanged.connect(updateSize)
 
-			Column{
+			TitlePopup{
 				id: titleItem
-
 				width: contentItem.width
-				height: childrenRect.height + 10
-
-				PlasmaComponents.Label{
-					id: text
-
-					text: mpris.identity
-					width: parent.width
-					lineHeight: 1.4
-					styleColor: theme.highlightColor
-					horizontalAlignment: Text.AlignHCenter
-					verticalAlignment: Text.AlignVCenter
-				}
-
-				PlasmaWidgets.Separator{
-					orientation: Qt.Horizontal
-					width: parent.width
-					anchors{
-						top: text.bottom
-						left: parent.left
-						right: parent.right
-					}
-				}
 			}
 
 			Layout{
 				id: contentItem
-				mpris: mpris
 			}
 		}
 	}

@@ -32,9 +32,9 @@ Row{
 
     spacing: 8
 
-	property Mpris2 source
-
 	property bool labelVisible: true
+
+	signal currentSeekPosition(int position)
 
 	width: childrenRect.width
 
@@ -44,7 +44,9 @@ Row{
         id: lengthTime
 
 		hover: false
-        currentTime: source.length
+        currentTime: mpris.length
+		autoTimeTrigger: mpris.isMaximumLoad
+
 		anchors{
 			verticalCenter: slider.verticalCenter
 			verticalCenterOffset: -1
@@ -55,12 +57,12 @@ Row{
 	Slider{
 		id: slider
 
-		maximumValue: source.length
-		value: source.position
-		width: parent.width - ( labelVisible ? (lengthTime.width * 2 + spacing * 3) : spacing )
+		maximumValue: mpris.length
+		value: mpris.position
+		width: parent.width - ( labelVisible ? (lengthTime.width * 2 + spacing * 3) : 0 )
 		height: 10
 
-		onValueChanged: Control.seek(value, source.position)
+		onValueChanged: Control.seek(value, mpris.position)
 		onSliderDragged: positionTime.timeChanged()
 
 	}
@@ -69,14 +71,20 @@ Row{
         id: positionTime
 
 		hover: true
-        topTime: source.length
-        currentTime: slider.pressed ? slider.valueForPosition : source.position
-		stopTimeAnimation: slider.pressed && slider.dragActive
+        topTime: mpris.length
+        currentTime: slider.pressed ? slider.valueForPosition : mpris.position
+		autoTimeTrigger: mpris.isMaximumLoad
 
 		anchors{
 			verticalCenter: slider.verticalCenter
 			verticalCenterOffset: -1
 		}
+
+		onTimeChanged: {
+			if(Control.openedPopup)
+				parent.currentSeekPosition(currentTime)
+		}
+
 		visible: labelVisible
 		negative: plasmoid.readConfig('timeNegative')
     }

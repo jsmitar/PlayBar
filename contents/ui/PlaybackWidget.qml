@@ -40,6 +40,7 @@ PlaybackItem{
 		model.itemAt(2).clicked.connect(stop)
 		model.itemAt(3).clicked.connect(next)
 	}
+
 	Component.onDestruction: {
 		model.itemAt(0).clicked.disconnect(previous)
 		model.itemAt(1).clicked.disconnect(playPause)

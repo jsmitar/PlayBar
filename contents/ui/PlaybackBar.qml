@@ -59,12 +59,6 @@ PlaybackItem{
 			model.itemAt(3).clicked.connect(next)
 		}
 
-		function disconnectMediaActions(){
-			model.itemAt(0).clicked.disconnect(previous)
-			model.itemAt(1).clicked.disconnect(playPause)
-			model.itemAt(2).clicked.disconnect(stop)
-			model.itemAt(3).clicked.disconnect(next)
-		}
 		connectMediaActions()
 
 		plasmoid.addEventListener('configChanged', function(){
