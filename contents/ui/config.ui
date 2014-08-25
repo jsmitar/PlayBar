@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>454</width>
-    <height>435</height>
+    <width>350</width>
+    <height>386</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,12 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>350</width>
+    <height>386</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -128,6 +134,65 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
           </property>
          </widget>
         </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_1">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Opaque buttons: </string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QCheckBox" name="kcfg_opaqueIcons">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="autoRepeat">
+           <bool>false</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>
@@ -159,7 +224,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
       </font>
      </property>
      <property name="title">
-      <string>Control Bar appearence</string>
+      <string>Control Bar</string>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -190,14 +255,8 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
           <property name="wrapping">
            <bool>true</bool>
           </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
           <property name="readOnly">
            <bool>false</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::UpDownArrows</enum>
           </property>
           <property name="specialValueText">
            <string/>
@@ -367,7 +426,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="title">
-      <string>Popup appearance</string>
+      <string>Popup</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -385,65 +444,6 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
          <enum>QLayout::SetFixedSize</enum>
         </property>
         <item row="0" column="1">
-         <widget class="QCheckBox" name="kcfg_opaqueIcons">
-          <property name="font">
-           <font>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string/>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-          <property name="autoRepeat">
-           <bool>false</bool>
-          </property>
-          <property name="autoExclusive">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_1">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="text">
-           <string>Opaque buttons: </string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
          <widget class="QComboBox" name="kcfg_popupStyle">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -476,12 +476,12 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
           </item>
           <item>
            <property name="text">
-            <string>Always display all the edges</string>
+            <string>ToolTip</string>
            </property>
           </item>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="0" column="0">
          <widget class="QLabel" name="label_3">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
@@ -496,14 +496,14 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
            </font>
           </property>
           <property name="text">
-           <string>Style borders of the popup: </string>
+           <string>Syle popup </string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="1" column="0">
          <widget class="QLabel" name="label_6">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
@@ -525,7 +525,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
+        <item row="1" column="1">
          <widget class="QComboBox" name="kcfg_PlayBarLayout">
           <property name="font">
            <font>
@@ -536,7 +536,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
            </font>
           </property>
           <property name="maxVisibleItems">
-           <number>2</number>
+           <number>3</number>
           </property>
           <item>
            <property name="text">
@@ -546,6 +546,11 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
           <item>
            <property name="text">
             <string>Minimalist</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Cool</string>
            </property>
           </item>
          </widget>
@@ -584,10 +589,11 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
  <tabstops>
   <tabstop>kcfg_showStop</tabstop>
   <tabstop>kcfg_windowFlagDialog</tabstop>
+  <tabstop>kcfg_opaqueIcons</tabstop>
   <tabstop>kcfg_flatButtons</tabstop>
+  <tabstop>kcfg_buttonSize</tabstop>
   <tabstop>kcfg_showNotifications</tabstop>
   <tabstop>kcfg_separatorVisible</tabstop>
-  <tabstop>kcfg_opaqueIcons</tabstop>
   <tabstop>kcfg_popupStyle</tabstop>
   <tabstop>kcfg_PlayBarLayout</tabstop>
  </tabstops>
