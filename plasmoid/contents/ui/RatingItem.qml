@@ -92,7 +92,7 @@ Item{
     Row{
         id: content
         spacing: 3
-		opacity: rating == 0 ? 0.7 : 1
+		opacity: rating < 0.1 ? 0.7 : 1
 
 		Behavior on opacity{ NumberAnimation{duration: 250} }
 

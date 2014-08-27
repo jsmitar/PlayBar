@@ -27,7 +27,7 @@ Item{
 
     property bool playing: mpris.playbackStatus == 'Playing'
 
-    property bool showStop: plasmoid.readConfig('showStop')
+    property bool showStop: mpris.source == 'spotify' ? false : plasmoid.readConfig('showStop')
 
     property bool vertical: false
 
@@ -44,7 +44,7 @@ Item{
     signal stop()
 
 	function showStopChanged(source){
-		//if( source == undefined ) source = playbackitem.source.source
+		if( source == undefined ) source = mpris.source
 		if( source != 'spotify' )
 			showStop = plasmoid.readConfig('showStop')
 		else showStop = false
