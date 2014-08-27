@@ -7,6 +7,9 @@ id: layouts
 
 resources: [defaultLayout, minimalLayout, coolLayout]
 
+property variant spotifyLayout: minimalLayout
+
+
 //###########
 // Cool
 //###########
@@ -185,9 +188,6 @@ Component{
 		}
 		PlaybackWidget{
 			id: playback
-
-			showStop: isSpotify ? false : plasmoid.readConfig('showStop')
-
 			spacing: 8
 
 			anchors{

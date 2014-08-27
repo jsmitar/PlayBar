@@ -32,7 +32,7 @@ Item{
 
 	property variant idLayout: undefined
 
-	property variant layouts: LayoutsResources{}
+	LayoutsResources{id: layouts}
 
 	height: childrenRect.height
 	width: childrenRect.width
@@ -50,7 +50,7 @@ Item{
 		id: loader
 
 		sourceComponent: if(noSource) undefined
-			else if(isSpotify) minimalLayout
+			else if(isSpotify) layouts.spotifyLayout
 			else idLayout
 
 		onLoaded:{
