@@ -26,6 +26,7 @@
 using Plasma::DataContainer;
 using Plasma::DataEngineManager;
 
+
 PlayBarEngine::PlayBarEngine(QObject* parent, const QVariantList& args)
     : DataEngine(parent, args)
 {

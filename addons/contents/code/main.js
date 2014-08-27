@@ -14,9 +14,9 @@ AudioTagger.prototype.toString = function()
     return "Get me an url"
 }
 
-AudioTagger.prototype.setUrl(url)
+AudioTagger.prototype.setUrl(url) = function()
 {
-	
+	return "Get me an url"
 }
 
 AudioTagger.prototype.setRating = function(value)

@@ -28,7 +28,6 @@ Component{
 
 				Frame{
 					id: frame
-
 					width: cover.width - 4
 					height: playback.height
 

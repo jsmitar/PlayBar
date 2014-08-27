@@ -21,15 +21,30 @@
 #include "service.h"
 #include "playbarengine.h"
 
+#include <vorbis/vorbisfile.h>
+
+
 PlayBarService::PlayBarService(QObject* parent)
     : Service(parent)
 {
     setName("playbarkeys");
 }
 
-ServiceJob* PlayBarService::createJob(const QString& operation, QMap< QString, QVariant >& parameters)
+ServiceJob* PlayBarService::createJob(const QString& operation,
+                                      QMap< QString, QVariant >& parameters)
 {
+    setDestination(name()+": "+operation);
     return new Job(destination(), operation, parameters, this);
+}
+
+
+Job::Job(const QString& destination,
+         const QString& operation,
+         const QMap< QString, QVariant >& parameters,
+         QObject* parent):
+    ServiceJob(destination, operation, parameters, parent)
+{
+
 }
 
 void Job::start()
@@ -38,9 +53,6 @@ void Job::start()
     setResult(true);
 }
 
-Job::Job(const QString& destination, const QString& operation, const QMap< QString, QVariant >& parameters, QObject* parent):
-    ServiceJob(destination, operation, parameters, parent)
-{}
 
 
 #include "service.moc"

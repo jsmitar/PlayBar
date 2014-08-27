@@ -187,13 +187,14 @@ Item{
 		Rectangle{
 			id: seek
 			width: 2
-			height: bar.height
+			height: parent.height
 			color: theme.highlightColor
 
 			border{
 				color: color
 				width: 4
 			}
+
 			opacity: 0
 			radius: 0.1
 			smooth: true
@@ -203,8 +204,6 @@ Item{
 				leftMargin: -2
 				left: !seekArea.pressed ? bar.right : undefined
 			}
-
-			x: !seekArea.drag.active ? range.position : 0
 
 			Behavior on opacity{ NumberAnimation{duration: 150} }
 

@@ -76,7 +76,7 @@ function removeActions(){
 	plasmoid.removeAction('sep1')
 }
 
-//print("addons: " + plasmoid.listAddons("org.kde.plasma.javascript-addons-example")[0].id)
+print("addons: " + plasmoid.listAddons("playbar.addons")[0].id)
 
 function controlBarWheelEvent(wheel){}
 

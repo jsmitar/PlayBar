@@ -35,16 +35,24 @@ public:
     explicit PlayBarService(QObject* parent = 0);
 
 protected:
-    virtual ServiceJob* createJob(const QString& operation, QMap< QString, QVariant >& parameters);
+    virtual ServiceJob* createJob(const QString& operation,
+                                  QMap< QString, QVariant >& parameters);
 
 };
 
 class Job : public ServiceJob
 {
 public:
-    Job(const QString& destination, const QString& operation, const QMap< QString, QVariant >& parameters, QObject* parent =
-0);
+
+    Job(const QString& destination,
+        const QString& operation,
+        const QMap< QString, QVariant >& parameters,
+        QObject* parent = 0);
+
     virtual void start();
 };
 
+
+
 #endif // SERVICE_H
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on;

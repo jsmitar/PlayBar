@@ -28,7 +28,7 @@ Item{
 	property bool isSpotify: mpris.source == 'spotify'
 
 	property bool noSource:
-		mpris.connectedSources ==  ""
+		mpris.connectedSources == ""
 
 	property variant idLayout: undefined
 
