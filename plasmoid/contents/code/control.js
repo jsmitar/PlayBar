@@ -76,8 +76,6 @@ function removeActions(){
 	plasmoid.removeAction('sep1')
 }
 
-print("addons: " + plasmoid.listAddons("playbar.addons")[0].id)
-
 function controlBarWheelEvent(wheel){}
 
 function sourceNotify(){}

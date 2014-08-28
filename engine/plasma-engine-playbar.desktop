@@ -1,12 +1,12 @@
 [Desktop Entry]
-Name=PlayBar keys
-Icon=preferences-desktop-keyboard-shortcuts
-Comment=Adds support for keyboard shortcuts
+Name=PlayBar engine
+Icon=media-playback-start
+Comment=Adds support for keyboard shortcuts and provide others services
 Type=Service
 
 X-KDE-Library=plasma_engine_playbar
 X-KDE-ServiceTypes=Plasma/DataEngine
-X-Plasma-EngineName=playbarkeys
+X-Plasma-EngineName=playbarengine
 
 X-KDE-PluginInfo-Author=Smith AR
 X-KDE-PluginInfo-Category=Multimedia
@@ -14,6 +14,6 @@ X-KDE-PluginInfo-Depends=
 X-KDE-PluginInfo-Email=audoban@openmailbox.org
 X-KDE-PluginInfo-EnabledByDefault=true
 X-KDE-PluginInfo-License=LGPL
-X-KDE-PluginInfo-Name=playbarkeys
+X-KDE-PluginInfo-Name=playbarengine
 X-KDE-PluginInfo-Version=0.6.1
 X-KDE-PluginInfo-Website=https://github.com/audoban/PlayBar

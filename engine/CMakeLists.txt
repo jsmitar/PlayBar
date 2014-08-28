@@ -29,5 +29,5 @@ install(TARGETS plasma_engine_playbar
 install(FILES plasma-engine-playbar.desktop
         DESTINATION ${SERVICES_INSTALL_DIR})
 
-install(FILES playbarkeys.operations
+install(FILES playbarengine.operations
         DESTINATION ${DATA_INSTALL_DIR}/plasma/services)

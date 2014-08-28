@@ -27,7 +27,7 @@
 PlayBarService::PlayBarService(QObject* parent)
     : Service(parent)
 {
-    setName("playbarkeys");
+    setName("playbarengine");
 }
 
 ServiceJob* PlayBarService::createJob(const QString& operation,

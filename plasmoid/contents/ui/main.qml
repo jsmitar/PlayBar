@@ -257,10 +257,9 @@ Item {
 	PlasmaCore.DataSource{
 		id: shortcuts
 
-		engine: 'playbarkeys'
-		//interval: 1000
+		engine: 'playbarengine'
 
-		connectedSources: ['Shortcuts']
+		connectedSources: ['Provider']
 
 		onNewData: if(data['SourceMpris2'] != undefined) print(data['SourceMpris2'])
 

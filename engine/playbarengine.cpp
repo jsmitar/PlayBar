@@ -46,7 +46,7 @@ PlayBarEngine::~PlayBarEngine()
 
 Service* PlayBarEngine::serviceForSource(const QString& source)
 {
-    if (source != "Shortcuts") return createDefaultService(this);
+    if (source != "Provider") return createDefaultService(this);
     return new PlayBarService(this);
 }
 
@@ -82,9 +82,10 @@ KAction* PlayBarEngine::createAction(const char* name, Qt::Key key)
 
 bool PlayBarEngine::sourceRequestEvent(const QString& source)
 {
-    if (source != "Shortcuts") return false;
+    if (source != "Provider") return false;
 
     if (mediaActions) return true;
+
     mediaActions = new KActionCollection(this->parent(), *(new KComponentData("PlayBar")));
 
     KAction* previous =
@@ -204,7 +205,7 @@ void PlayBarEngine::quit()
 
 QString PlayBarEngine::mpris2Source;
 
-K_EXPORT_PLASMA_DATAENGINE(playbarkeys, PlayBarEngine)
+K_EXPORT_PLASMA_DATAENGINE(playbarengine, PlayBarEngine)
 
 #include "playbarengine.moc"
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
