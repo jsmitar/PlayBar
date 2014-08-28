@@ -121,13 +121,13 @@ Item {
         }
 
         plasmoid.formFactorChanged.connect(formFactorChanged)
+		plasmoid.resize(controlBar.width, controlBar.height)
         formFactorChanged()
 
 		plasmoid.addEventListener('configChanged', function(){
 				showNotifications = plasmoid.readConfig('showNotifications')
 				sep.visible = plasmoid.readConfig('separatorVisible')
 				playbackBar.buttonSize = plasmoid.readConfig('buttonSize')
-				plasmoid.resize(minimumWidth, minimumHeight)
 				shortcuts.connectSource("Shortcuts")
 			}
 		)
@@ -235,8 +235,8 @@ Item {
 			maximumWidth: (vertical ? controlBar.height : controlBar.width)
 			minimumWidth: (vertical ? playbackBar.height : playbackBar.width)
 
-			verticalOffset: (iconPopup.width + controlBar.spacing)/2 + (playbackBar.flatButtons ? 2 : -1)
-			horizontalOffset: (iconPopup.height + controlBar.spacing)/2 + (playbackBar.flatButtons ? 2 : -1)
+			verticalOffset: (iconPopup.height)/2 + controlBar.spacing + (playbackBar.flatButtons ? 2 : 4)
+			horizontalOffset: (iconPopup.width)/2 + controlBar.spacing + (playbackBar.flatButtons ? 2 : 4)
 
 			anchors{
 				centerIn: parent
