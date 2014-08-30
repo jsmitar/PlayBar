@@ -14,7 +14,7 @@ include_directories(
    )
 
 # We add our source code here
-set(playbar_engine_SRCS service.cpp playbarengine.cpp)
+set(playbar_engine_SRCS shortcuts.cpp service.cpp playbarengine.cpp)
 
 # Now make sure all files get to the right place
 kde4_add_plugin(plasma_engine_playbar ${playbar_engine_SRCS})
@@ -29,5 +29,5 @@ install(TARGETS plasma_engine_playbar
 install(FILES plasma-engine-playbar.desktop
         DESTINATION ${SERVICES_INSTALL_DIR})
 
-install(FILES playbarengine.operations
+install(FILES playbarservice.operations
         DESTINATION ${DATA_INSTALL_DIR}/plasma/services)

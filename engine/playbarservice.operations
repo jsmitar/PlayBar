@@ -6,4 +6,9 @@
 			<label>Set the name of the source Mpris2</label>
 		</entry>
 	</group>
+	<group name="SetRating">
+		<entry name="rating" type="String">
+			<label>Set rating of the a song track</label>
+		</entry>
+	</group>
 </kcfg>

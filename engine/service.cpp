@@ -27,7 +27,7 @@
 PlayBarService::PlayBarService(QObject* parent)
     : Service(parent)
 {
-    setName("playbarengine");
+    setName("playbarservice");
 }
 
 ServiceJob* PlayBarService::createJob(const QString& operation,
@@ -37,23 +37,27 @@ ServiceJob* PlayBarService::createJob(const QString& operation,
     return new Job(destination(), operation, parameters, this);
 }
 
-
 Job::Job(const QString& destination,
          const QString& operation,
          const QMap< QString, QVariant >& parameters,
          QObject* parent):
     ServiceJob(destination, operation, parameters, parent)
 {
-
 }
 
 void Job::start()
 {
-    PlayBarEngine::mpris2Source = parameters().value("name").toString();
+    const QString operation(operationName());
+
+    if(operation == QLatin1String("SetSource")){
+        PlayBarEngine::p_mpris2Source = parameters().value("name").toString();
+
+    } else if(operation == QLatin1String("SetRating")){
+
+    }
+
     setResult(true);
 }
-
-
 
 #include "service.moc"
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

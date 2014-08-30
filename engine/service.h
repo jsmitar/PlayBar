@@ -24,8 +24,12 @@
 #include <Plasma/Service>
 #include <Plasma/ServiceJob>
 
+#include <kdebug.h>
+
 using Plasma::Service;
 using Plasma::ServiceJob;
+
+#include <typeinfo>
 
 class PlayBarService : public Service
 {
@@ -34,10 +38,12 @@ class PlayBarService : public Service
 public:
     explicit PlayBarService(QObject* parent = 0);
 
+    virtual ~PlayBarService(){
+        kDebug() << "I died: " << typeid(this).name();
+    }
 protected:
     virtual ServiceJob* createJob(const QString& operation,
                                   QMap< QString, QVariant >& parameters);
-
 };
 
 class Job : public ServiceJob
@@ -48,6 +54,10 @@ public:
         const QString& operation,
         const QMap< QString, QVariant >& parameters,
         QObject* parent = 0);
+
+    virtual ~Job(){
+        kDebug() << "I died: " << typeid(this).name();
+    }
 
     virtual void start();
 };

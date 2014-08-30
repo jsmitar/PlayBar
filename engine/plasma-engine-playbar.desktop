@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=PlayBar engine
+Name=PlayBar provider
 Icon=media-playback-start
 Comment=Adds support for keyboard shortcuts and provide others services
 Type=Service
@@ -17,3 +17,5 @@ X-KDE-PluginInfo-License=LGPL
 X-KDE-PluginInfo-Name=playbarengine
 X-KDE-PluginInfo-Version=0.6.1
 X-KDE-PluginInfo-Website=https://github.com/audoban/PlayBar
+
+#X-KDE-ParentApp=PlayBar

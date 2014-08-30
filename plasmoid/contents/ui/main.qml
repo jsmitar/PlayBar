@@ -264,7 +264,7 @@ Item {
 		onNewData: if(data['SourceMpris2'] != undefined) print(data['SourceMpris2'])
 
 		function sourceChanged(source){
-			var serv = serviceForSource('Shortcuts');
+			var serv = serviceForSource('Provider');
 			var op = serv.operationDescription('SetSource');
 			op['name'] = source;
 			serv.startOperationCall(op);
