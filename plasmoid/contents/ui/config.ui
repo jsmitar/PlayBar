@@ -496,7 +496,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
            </font>
           </property>
           <property name="text">
-           <string>Syle popup </string>
+           <string>Style popup: </string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -577,14 +577,6 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
     </spacer>
    </item>
   </layout>
-  <action name="kcfg_PlayPause_2">
-   <property name="text">
-    <string>playpause</string>
-   </property>
-   <property name="shortcutContext">
-    <enum>Qt::WidgetWithChildrenShortcut</enum>
-   </property>
-  </action>
  </widget>
  <tabstops>
   <tabstop>kcfg_showStop</tabstop>

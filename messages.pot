@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-05 18:53-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: plasmoid/contents/ui/Mpris2.qml:52 plasmoid/contents/ui/Mpris2.qml:81
+#: plasmoid/contents/ui/Mpris2.qml:166
+msgid "No source"
+msgstr ""
+
+#: plasmoid/contents/ui/TrackInfo.qml:117
+msgid "By %1"
+msgstr ""
+
+#: plasmoid/contents/ui/TrackInfo.qml:174
+msgid "On %1"
+msgstr ""
+
+#: plasmoid/contents/code/control.js:63
+msgid "Open %1"
+msgstr ""
+
+#: plasmoid/contents/code/control.js:64
+msgid "Quit"
+msgstr ""
+
+#: plasmoid/contents/code/control.js:66
+msgid "Next source"
+msgstr ""
+
+#: rc.js:3
+msgid "Form"
+msgstr ""
+
+#: rc.js:6
+msgid "General preferences"
+msgstr ""
+
+#: rc.js:9
+msgid "Display Stop button: "
+msgstr ""
+
+#: rc.js:12
+msgid "Avoid popup close when it loses focus: "
+msgstr ""
+
+#: rc.js:15
+msgid ""
+"The window behaves like a dialogue, correcting an \n"
+"annoying behavior. If you use CairoDock or Plank \n"
+"disable this option or create a KWin rule for \"Plasma\"."
+msgstr ""
+
+#: rc.js:20
+msgid "Opaque buttons: "
+msgstr ""
+
+#: rc.js:23
+msgid "Control Bar"
+msgstr ""
+
+#: rc.js:26
+msgid " pixels"
+msgstr ""
+
+#: rc.js:29
+msgid "Flat buttons: "
+msgstr ""
+
+#: rc.js:32
+msgid "Show notifications: "
+msgstr ""
+
+#: rc.js:35
+msgid "Visible separator: "
+msgstr ""
+
+#: rc.js:38
+msgid "Size of buttons: "
+msgstr ""
+
+#: rc.js:41
+msgid "Popup"
+msgstr ""
+
+#: rc.js:44
+msgid "Default"
+msgstr ""
+
+#: rc.js:47
+msgid "ToolTip"
+msgstr ""
+
+#: rc.js:50
+msgid "Style popup: "
+msgstr ""
+
+#: rc.js:53
+msgid "Layout: "
+msgstr ""
+
+#: rc.js:56
+msgid "PlayBar"
+msgstr ""
+
+#: rc.js:59
+msgid "Minimalist"
+msgstr ""
+
+#: rc.js:62
+msgid "Cool"
+msgstr ""

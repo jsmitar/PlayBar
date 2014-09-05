@@ -49,7 +49,7 @@ DataSource{
 	property bool sourceActive: false
 
 
-	property string identity: hasSource('Identity') ? data[source]['Identity'] : "No source"
+	property string identity: hasSource('Identity') ? data[source]['Identity'] : i18n("No source")
 
 	property string playbackStatus: hasSource('PlaybackStatus') ? data[source]['PlaybackStatus'] : "unknown"
 
@@ -78,7 +78,7 @@ DataSource{
 
 	onSourceChanged: {
 		if(data[source] != undefined ) identity = data[source]['Identity']
-		else identity = "No source"
+		else identity = i18n("No source")
 	}
 
 	//Component.onCompleted: initialConnection = true
@@ -163,7 +163,7 @@ DataSource{
 			sourceActive = true
 			initialConnection = false
 		}
-		idty = data[source] != undefined ? data[source]['Identity'] : "No source"
+		idty = data[source] != undefined ? data[source]['Identity'] : i18n("No source")
 		Control.setSource(source, idty)
 	}
 

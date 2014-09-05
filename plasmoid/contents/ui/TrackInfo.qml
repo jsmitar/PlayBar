@@ -114,8 +114,7 @@ Item{
 		Label{
 			id: artist
 
-			text: i18nc("What artist is this track by", "By %1",  mpris.artist)
-
+			text: i18n("By %1", mpris.artist)
 			wrapMode: Text.WrapAnywhere
 			elide: Text.ElideRight
 			maximumLineCount: 1
@@ -172,7 +171,7 @@ Item{
 		Label{
 			id: album
 
-			text:  i18nc("What album is this track on", "On %1", mpris.album)
+			text:  i18n("On %1", mpris.album)
 			wrapMode: Text.WrapAnywhere
 			elide: Text.ElideRight
 			maximumLineCount: 1

@@ -60,10 +60,10 @@ function setActions(sourceName, identity){
 			break
 	}
 
-	plasmoid.setAction('raise', i18nc("@action:inmenu", "Open %1", identity), icon)
-	plasmoid.setAction('quit', i18nc("@action:inmenu", "Quit"), 'exit')
+	plasmoid.setAction('raise', i18n("Open %1", identity), icon)
+	plasmoid.setAction('quit', i18n("Quit"), 'exit')
 	plasmoid.setActionSeparator('sep0')
-	plasmoid.setAction('nextSource', i18nc("@action:inmenu", "Next source"), 'go-next')
+	plasmoid.setAction('nextSource', i18n("Next source"), 'go-next')
 	plasmoid.setActionSeparator('sep1')
 
 }
