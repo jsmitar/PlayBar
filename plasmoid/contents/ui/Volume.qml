@@ -1,7 +1,6 @@
 // -*- coding: iso-8859-1 -*-
 /*
  *   Author: audoban <audoban@openmailbox.org>
- *   Date: jue may 1 2014, 13:05:43
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library General Public License as
@@ -18,6 +17,7 @@
  *   Free Software Foundation, Inc.,
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+
 
 import QtQuick 1.1
 import org.kde.plasma.components 0.1 as PlasmaComponents

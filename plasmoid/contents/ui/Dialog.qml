@@ -185,7 +185,7 @@ Item {
 			function config(){
 
 				if (plasmoid.readConfig('windowFlagDialog') == true)
-					windowFlags = Qt.Popup | Qt.Dialog | Qt.WindowStaysOnTopHint
+					windowFlags = Qt.Dialog | Qt.WindowStaysOnTopHint
 				else
 					windowFlags = Qt.Popup | Qt.WindowStaysOnTopHint
 
