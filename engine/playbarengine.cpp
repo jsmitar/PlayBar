@@ -36,14 +36,17 @@ PlayBarEngine::PlayBarEngine(QObject* parent, const QVariantList& args)
 
 PlayBarEngine::~PlayBarEngine()
 {
+
 }
 
 Service* PlayBarEngine::serviceForSource(const QString& source)
 {
-    if (source != "Provider") return createDefaultService(this);
-    return new PlayBarService(this);
-}
+    if (source != "Provider")
+        return createDefaultService(this);
 
+    updateSourceEvent(source);
+    return new PlayBarService(mpris2_data, this);
+}
 
 void PlayBarEngine::init()
 {
@@ -51,21 +54,23 @@ void PlayBarEngine::init()
     mpris2 = engine->loadEngine("mpris2");
 }
 
-
 bool PlayBarEngine::sourceRequestEvent(const QString& source)
 {
     if (source != "Provider") return false;
-    mediaActions =  new Shortcuts(this);
+    mediaActions = new Shortcuts(this);
     return updateSourceEvent(source);
 }
 
-
 bool PlayBarEngine::updateSourceEvent(const QString& source)
 {
-    const Data &data = mediaActions->actions();
+    const Data* data = &mediaActions->actions();
 
-    setData(source, data);
+    setData(source, *data);
     setData(source, "Mpris2Source", p_mpris2Source);
+    setData(source, "PlaybackStatus", playbackStat());
+    setData(source, "Metadata", mpris2_data.value("Metadata").toMap());
+
+    delete data; data = 0;
     return true;
 }
 

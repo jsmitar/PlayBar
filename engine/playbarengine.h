@@ -44,18 +44,18 @@ public:
     virtual Service* serviceForSource(const QString& source);
 
     static QString p_mpris2Source;
+    Plasma::DataEngine::Data mpris2_data;
 
     // Playing status
-    QString playbackStat(){
-        data = mpris2->query(p_mpris2Source);
-        return data.value("PlaybackStatus", "").toString();
+    QString playbackStat() {
+        mpris2_data = mpris2->query(p_mpris2Source);
+        return mpris2_data.value("PlaybackStatus", "").toString();
     };
 
     // Do a operation over plasma mpris2 engine
     void startOpOverMpris2(const QString& name);
 
 protected:
-
     virtual void init();
     virtual bool sourceRequestEvent(const QString& source);
     virtual bool updateSourceEvent(const QString& source);
@@ -65,11 +65,10 @@ private:
     KAction* createAction(const char* name);
 
     Plasma::DataEngine* mpris2;
-    Plasma::DataEngine::Data data;
     Plasma::Service* serv;
     Plasma::ServiceJob* job;
 
-    Shortcuts * mediaActions;
+    Shortcuts* mediaActions;
     KConfigGroup op;
 };
 

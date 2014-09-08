@@ -23,24 +23,25 @@
 
 #include <Plasma/Service>
 #include <Plasma/ServiceJob>
+#include <Plasma/DataEngine>
 
-#include <kdebug.h>
+#include <QDebug>
+#include <typeinfo>
 
 using Plasma::Service;
 using Plasma::ServiceJob;
+using Plasma::DataEngine;
 
-#include <typeinfo>
 
 class PlayBarService : public Service
 {
     Q_OBJECT
 
 public:
-    explicit PlayBarService(QObject* parent = 0);
+    explicit PlayBarService(const DataEngine::Data& data, QObject* parent);
 
-    virtual ~PlayBarService(){
-        kDebug() << "I died: " << typeid(this).name();
-    }
+    const DataEngine::Data &data;
+
 protected:
     virtual ServiceJob* createJob(const QString& operation,
                                   QMap< QString, QVariant >& parameters);
@@ -55,14 +56,12 @@ public:
         const QMap< QString, QVariant >& parameters,
         QObject* parent = 0);
 
-    virtual ~Job(){
-        kDebug() << "I died: " << typeid(this).name();
-    }
-
     virtual void start();
+
+private:
+
+    bool setRating(const QString& url, const QString& rating);
 };
-
-
 
 #endif // SERVICE_H
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

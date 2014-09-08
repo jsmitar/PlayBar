@@ -21,11 +21,19 @@
 #include "service.h"
 #include "playbarengine.h"
 
-#include <vorbis/vorbisfile.h>
+#include <filetype.h>
+#include <id3v2tag.h>
+#include <tfile.h>
+#include <tpropertymap.h>
+#include <tstring.h>
 
+#define QStrToTStr(s) TagLib::String(s.toUtf8().data(), TagLib::String::UTF8)
+#define TStrToQStr(s) QString::fromUtf8(s.toCString(true))
 
-PlayBarService::PlayBarService(QObject* parent)
-    : Service(parent)
+using namespace TagLib;
+
+PlayBarService::PlayBarService(const DataEngine::Data& data, QObject* parent)
+    : Service(parent), data(data)
 {
     setName("playbarservice");
 }
@@ -33,7 +41,9 @@ PlayBarService::PlayBarService(QObject* parent)
 ServiceJob* PlayBarService::createJob(const QString& operation,
                                       QMap< QString, QVariant >& parameters)
 {
-    setDestination(name()+": "+operation);
+    setDestination(name() + ": " + operation);
+    parameters.insert("Metadata", data.value("Metadata"));
+
     return new Job(destination(), operation, parameters, this);
 }
 
@@ -49,15 +59,47 @@ void Job::start()
 {
     const QString operation(operationName());
 
-    if(operation == QLatin1String("SetSource")){
+    bool result = false;
+
+    if (operation == QLatin1String("SetSource")) {
         PlayBarEngine::p_mpris2Source = parameters().value("name").toString();
+        result = true;
+    } else if (operation == QLatin1String("SetRating")) {
+        const QVariantMap metadata(parameters().value("Metadata").toMap());
 
-    } else if(operation == QLatin1String("SetRating")){
+        if (metadata.isEmpty()) qDebug() << "metadata isEmpty";
 
+        result = setRating(metadata.value("xesam:url").toString(), parameters().value("rating", "0").toString());
     }
 
-    setResult(true);
+    setResult(result);
 }
+
+bool Job::setRating(const QString& url, const QString& rating)
+{
+//     File *f(0);
+//     f = FileType::createFile(url);
+//
+//     ID3v2::Tag* tag = f
+//
+//     if (tag && !tag->isEmpty()) {
+//         PropertyMap props(tag->properties());
+//         const TagLib::String FMPS_RATING("FMPS_RATING");
+//
+//         props.replace(FMPS_RATING, QStrToTStr(rating));
+//
+//         qDebug() << "f->tag: " << TStrToQStr(tag->properties().toString());
+//         qDebug() << "props" << TStrToQStr(props.toString());
+//         qDebug() << "fileName: " << fileName;
+//         qDebug() << "rating: " << rating;
+//         bool propsReplaced = tag->setProperties(props) == props;
+//         f->save();
+//         if (propsReplaced) return true;
+//     }
+
+    return false;
+}
+
 
 #include "service.moc"
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

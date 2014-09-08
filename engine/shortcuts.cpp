@@ -18,41 +18,32 @@
  */
 
 #include "shortcuts.h"
+#include <iostream>
 
 Shortcuts::Shortcuts(PlayBarEngine* engine):
-QObject()
+    QObject(), mediaActions(this)
 {
     playbarEngine = engine;
 
-    mediaActions = new KActionCollection(this->parent(), *(new KComponentData("PlayBar")));
-
     KAction* previous =
-    createAction("Previous", Qt::Key_MediaPrevious);
+        createAction("Previous", Qt::Key_MediaPrevious);
     KAction* pause =
-    createAction("Pause", Qt::Key_MediaPause);
+        createAction("Pause", Qt::Key_MediaPause);
     KAction* play =
-    createAction("Play", Qt::Key_MediaPlay);
+        createAction("Play", Qt::Key_MediaPlay);
     KAction* stop =
-    createAction("Stop", Qt::Key_MediaStop);
+        createAction("Stop", Qt::Key_MediaStop);
     KAction* play_pause =
-    createAction("PlayPause", Qt::Key_MediaTogglePlayPause);
+        createAction("PlayPause", Qt::Key_MediaTogglePlayPause);
     KAction* next =
-    createAction("Next", Qt::Key_MediaNext);
+        createAction("Next", Qt::Key_MediaNext);
     KAction* open =
-    createAction("Open");
+        createAction("Open");
     KAction* quit =
-    createAction("Quit");
+        createAction("Quit");
 
-    mediaActions->addAction("Play", play);
-    mediaActions->addAction("Pause", pause);
-    mediaActions->addAction("PlayPause", play_pause);
-    mediaActions->addAction("Stop", stop);
-    mediaActions->addAction("Previous", previous);
-    mediaActions->addAction("Next", next);
-    mediaActions->addAction("Open", open);
-    mediaActions->addAction("Quit", quit);
-    mediaActions->setConfigGlobal(true);
-    mediaActions->setConfigGroup("PlayBar");
+    mediaActions.setConfigGlobal(true);
+    mediaActions.setConfigGroup("PlayBar");
 
     connect(play_pause, SIGNAL(triggered(bool)), this, SLOT(playpause()));
     connect(play, SIGNAL(triggered(bool)), this, SLOT(play()));
@@ -71,10 +62,12 @@ KAction* Shortcuts::createAction(const char* name)
         text = ki18n("Play").toString() + '/' + ki18n("Pause").toString();
     else text = ki18n(name).toString();
 
-    KAction* action = new KAction("PlayBar: "+text, 0);
+    KAction* action = new KAction("PlayBar: " + text, 0);
     action->setObjectName(name);
-    action->setParent(mediaActions);
+    action->setParent(&mediaActions);
     action->setGlobalShortcut(KShortcut());
+    mediaActions.addAction(text, action);
+
     return action;
 }
 
@@ -87,15 +80,15 @@ KAction* Shortcuts::createAction(const char* name, Qt::Key key)
 
 const Plasma::DataEngine::Data& Shortcuts::actions() const
 {
-    QList<QAction*> actions(mediaActions->actions());
+    QList<QAction*> actions(mediaActions.actions());
     QList<QAction*>::const_iterator it = actions.constBegin();
 
-    Plasma::DataEngine::Data *data = new Plasma::DataEngine::Data();
+    Plasma::DataEngine::Data* data = new Plasma::DataEngine::Data();
 
-    while (it != actions.constEnd()){
+    while (it != actions.constEnd()) {
         const QString globalShortcut((static_cast<const KAction*>(*it))->globalShortcut().toString());
         const QString text = (*it)->text();
-        data->insert( text , globalShortcut);
+        data->insert(text , globalShortcut);
         ++it;
     }
     return *data;
@@ -164,3 +157,4 @@ void Shortcuts::quit()
 }
 
 #include "shortcuts.moc"
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on;

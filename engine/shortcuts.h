@@ -47,14 +47,14 @@ private slots:
     void quit();
 
 private:
-
     KAction* createAction(const char* name, Qt::Key key);
     KAction* createAction(const char* name);
 
-    KActionCollection* mediaActions;
+    KActionCollection mediaActions;
 
-    PlayBarEngine *playbarEngine;
+    PlayBarEngine* playbarEngine;
 
 };
 
 #endif // SHORTCUTS_H
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on;

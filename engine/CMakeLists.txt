@@ -1,6 +1,7 @@
 project(PlayBarEngine)
 
 find_package(KDE4 REQUIRED)
+find_package(Taglib 1.8)
 
 include(KDE4Defaults)
 include(MacroLibrary)
@@ -11,17 +12,19 @@ include_directories(
    ${CMAKE_BINARY_DIR}
    ${KDE4_INCLUDES}
    ${QT_INCLUDES}
+   ${TAGLIB_INCLUDES}
    )
 
 # We add our source code here
-set(playbar_engine_SRCS shortcuts.cpp service.cpp playbarengine.cpp)
+set(playbar_engine_SRCS filetype.cpp shortcuts.cpp service.cpp playbarengine.cpp)
 
 # Now make sure all files get to the right place
 kde4_add_plugin(plasma_engine_playbar ${playbar_engine_SRCS})
 
 target_link_libraries(plasma_engine_playbar
                       ${KDE4_KDECORE_LIBS}
-                      ${KDE4_PLASMA_LIBS})
+                      ${KDE4_PLASMA_LIBS}
+                      ${TAGLIBS})
 
 install(TARGETS plasma_engine_playbar
         DESTINATION ${PLUGIN_INSTALL_DIR})
