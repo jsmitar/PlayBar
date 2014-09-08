@@ -73,16 +73,14 @@ Item{
 
 			anchors{
 				topMargin: 0
-				bottomMargin: 0
+				bottomMargin: -1
 			}
 		}
 		AnchorChanges{
 			target: bar
 			anchors{
 				top: undefined
-				bottom: content.bottom
-				left: content.left
-				right: content.right
+				right: parent.right
 			}
 		}
 		//seek

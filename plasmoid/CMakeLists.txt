@@ -1,3 +1,4 @@
+
 install(DIRECTORY contents
         DESTINATION ${DATA_INSTALL_DIR}/plasma/plasmoids/playbar )
 
