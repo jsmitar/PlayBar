@@ -15,12 +15,14 @@ extractrc="extractrc"
 
 output_po='./messages.po'
 output_pot='./messages.pot'
+playbar_mo='plasma_applet_playbar.mo'
+playbar_po='playbar.po'
 input_files=(./plasmoid/contents/{ui,code}/*.*)
 locale_dir='./plasmoid/locale'
 
 if [ $1 == '-add-language' ] && [ -n $2  ] ; then
    mkdir -p "$locale_dir/$2/LC_MESSAGES"
-   cp $output_pot "$locale_dir/$2/LC_MESSAGES/playbar.po"
+   $xgettext -o $locale_dir/$2/"LC_MESSAGES"/$playbar_po ${input_files[@]} ./rc.js
    exit
 fi
 
@@ -34,7 +36,7 @@ fi
 
 if [ $1 == '-c' ] || [ $1 == '-compile-po' ] ; then
     for d in $locale_dir/* ; do
-        echo "Bulding $d/LC_MESSAGES/playbar.mo ..."
-        msgfmt "$d/LC_MESSAGES/playbar.po" -o "$d/LC_MESSAGES/playbar.mo"
+        echo "Building $d/LC_MESSAGES/playbar.mo ..."
+        msgfmt "$d/LC_MESSAGES/$playbar_po" -o "$d/LC_MESSAGES/$playbar_mo"
     done
 fi
