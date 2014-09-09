@@ -1,5 +1,5 @@
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2014  smith AR <audoban@openmailbox.org>
+# This file is distributed under the same license as the PlayBar package.
 #
 # smith AR <audoban@openmailbox.org>, 2014.
 msgid ""
@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-06 14:25-0500\n"
-"PO-Revision-Date: 2014-09-07 10:56-0500\n"
+"PO-Revision-Date: 2014-09-09 12:33-0500\n"
 "Last-Translator: smith AR <audoban@openmailbox.org>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -103,7 +103,7 @@ msgstr "Ventana Emergente"
 
 #: rc.js:44
 msgid "Default"
-msgstr "Por defecto"
+msgstr "Por defecto "
 
 #: rc.js:47
 msgid "ToolTip"

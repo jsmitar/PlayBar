@@ -23,6 +23,7 @@
 #include <QLatin1String>
 #include <QDebug>
 
+#include <audioproperties.h>
 #include <flacfile.h>
 #include <mpcfile.h>
 #include <mpegfile.h>

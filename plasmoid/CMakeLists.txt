@@ -1,4 +1,3 @@
-
 install(DIRECTORY contents
         DESTINATION ${DATA_INSTALL_DIR}/plasma/plasmoids/playbar )
 
@@ -7,7 +6,7 @@ install(FILES metadata.desktop
 
 install(FILES metadata.desktop
         DESTINATION ${KDE4_SERVICES_INSTALL_DIR}
-        RENAME playbar.desktop )
+        RENAME plasma-applet-playbar.desktop )
 
 install(DIRECTORY locale
         DESTINATION ${KDE4_LOCALE_INSTALL_DIR}
