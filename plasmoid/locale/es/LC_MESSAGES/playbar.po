@@ -1,14 +1,12 @@
-# Copyright (C) 2014  smith AR <audoban@openmailbox.org>
-# This file is distributed under the same license as the PlayBar package.
+# Header entry was created by Lokalize.
 #
 # smith AR <audoban@openmailbox.org>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-06 14:25-0500\n"
-"PO-Revision-Date: 2014-09-09 12:33-0500\n"
-"Last-Translator: smith AR <audoban@openmailbox.org>\n"
+"POT-Creation-Date: 2014-09-10 21:13-0500\n"
+"PO-Revision-Date: 2014-09-10 21:14-0500\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -16,49 +14,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.5\n"
+"Last-Translator: smith AR <audoban@openmailbox.org>\n"
 
-#: plasmoid/contents/ui/Mpris2.qml:52 plasmoid/contents/ui/Mpris2.qml:81
-#: plasmoid/contents/ui/Mpris2.qml:166
+#: plasmoid/contents/ui/Mpris2.qml:51 plasmoid/contents/ui/Mpris2.qml:80
+#: plasmoid/contents/ui/Mpris2.qml:165
 msgid "No source"
 msgstr "Sin medios"
 
-#: plasmoid/contents/ui/TrackInfo.qml:117
-msgid "By %1"
-msgstr "Por %1"
-
-#: plasmoid/contents/ui/TrackInfo.qml:174
-msgid "On %1"
-msgstr "En %1"
-
-#: plasmoid/contents/code/control.js:63
-msgid "Open %1"
-msgstr "Abrir %1"
-
-#: plasmoid/contents/code/control.js:64
-msgid "Quit"
-msgstr "Salir"
-
-#: plasmoid/contents/code/control.js:66
-msgid "Next source"
-msgstr "Siguiente medio"
-
-#: rc.js:3
+#: plasmoid/contents/ui/rc.js:3
 msgid "Form"
 msgstr "Formulario"
 
-#: rc.js:6
+#: plasmoid/contents/ui/rc.js:6
 msgid "General preferences"
 msgstr "Preferencias generales"
 
-#: rc.js:9
+#: plasmoid/contents/ui/rc.js:9
 msgid "Display Stop button: "
 msgstr "Mostrar el botón de Stop: "
 
-#: rc.js:12
+#: plasmoid/contents/ui/rc.js:12
 msgid "Avoid popup close when it loses focus: "
-msgstr "Evitar cerrar la ventana emergente cuando pierde foco: "
+msgstr "Evitar cerrar la ventana emergente cuando se pierde foco: "
 
-#: rc.js:15
+#: plasmoid/contents/ui/rc.js:15
 msgid ""
 "The window behaves like a dialogue, correcting an \n"
 "annoying behavior. If you use CairoDock or Plank \n"
@@ -69,64 +48,83 @@ msgstr ""
 "puede considerar deshabilitar esta opción o añadir \n"
 "una regla KWin para \"plasma-desktop\"."
 
-#: rc.js:20
+#: plasmoid/contents/ui/rc.js:20
 msgid "Opaque buttons: "
 msgstr "Botones opacos: "
 
-#: rc.js:23
+#: plasmoid/contents/ui/rc.js:23
 msgid "Control Bar"
 msgstr "Barra de Control"
 
-#: rc.js:26
+#: plasmoid/contents/ui/rc.js:26
 msgid " pixels"
 msgstr " píxeles"
 
-#: rc.js:29
+#: plasmoid/contents/ui/rc.js:29
 msgid "Flat buttons: "
 msgstr "Botones planos: "
 
-#: rc.js:32
+#: plasmoid/contents/ui/rc.js:32
 msgid "Show notifications: "
-msgstr "Mostrar notificaciones: "
+msgstr "Ver notificaciones: "
 
-#: rc.js:35
+#: plasmoid/contents/ui/rc.js:35
 msgid "Visible separator: "
 msgstr "Separador visible: "
 
-#: rc.js:38
+#: plasmoid/contents/ui/rc.js:38
 msgid "Size of buttons: "
 msgstr "Tamaño de los botones: "
 
-#: rc.js:41
+#: plasmoid/contents/ui/rc.js:41
 msgid "Popup"
 msgstr "Ventana Emergente"
 
-#: rc.js:44
+#: plasmoid/contents/ui/rc.js:44
 msgid "Default"
-msgstr "Por defecto "
+msgstr "Por defecto"
 
-#: rc.js:47
+#: plasmoid/contents/ui/rc.js:47
 msgid "ToolTip"
 msgstr "ToolTip"
 
-#: rc.js:50
+#: plasmoid/contents/ui/rc.js:50
 msgid "Style popup: "
 msgstr "Estilo de la ventana: "
 
-#: rc.js:53
+#: plasmoid/contents/ui/rc.js:53
 msgid "Layout: "
 msgstr "Diseño: "
 
-#: rc.js:56
+#: plasmoid/contents/ui/rc.js:56
 msgid "PlayBar"
 msgstr "PlayBar"
 
-#: rc.js:59
+#: plasmoid/contents/ui/rc.js:59
 msgid "Minimalist"
 msgstr "Mínimo"
 
-#: rc.js:62
+#: plasmoid/contents/ui/rc.js:62
 msgid "Cool"
 msgstr "Fresco"
 
+#: plasmoid/contents/ui/TrackInfo.qml:116
+msgid "By %1"
+msgstr "Por %1"
+
+#: plasmoid/contents/ui/TrackInfo.qml:173
+msgid "On %1"
+msgstr "En %1"
+
+#: plasmoid/contents/code/control.js:83
+msgid "Open %1"
+msgstr "Abrir %1"
+
+#: plasmoid/contents/code/control.js:84
+msgid "Quit"
+msgstr "Salir"
+
+#: plasmoid/contents/code/control.js:86
+msgid "Next source"
+msgstr "Siguiente medio"
 

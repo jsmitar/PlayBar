@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-06 13:14-0500\n"
+"POT-Creation-Date: 2014-09-10 11:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,28 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: plasmoid/contents/ui/Mpris2.qml:52 plasmoid/contents/ui/Mpris2.qml:81
-#: plasmoid/contents/ui/Mpris2.qml:166
+#: plasmoid/contents/ui/Mpris2.qml:51 plasmoid/contents/ui/Mpris2.qml:80
+#: plasmoid/contents/ui/Mpris2.qml:165
 msgid "No source"
 msgstr ""
 
-#: plasmoid/contents/ui/TrackInfo.qml:117
+#: plasmoid/contents/ui/TrackInfo.qml:116
 msgid "By %1"
 msgstr ""
 
-#: plasmoid/contents/ui/TrackInfo.qml:174
+#: plasmoid/contents/ui/TrackInfo.qml:173
 msgid "On %1"
 msgstr ""
 
-#: plasmoid/contents/code/control.js:63
+#: plasmoid/contents/code/control.js:83
 msgid "Open %1"
 msgstr ""
 
-#: plasmoid/contents/code/control.js:64
+#: plasmoid/contents/code/control.js:84
 msgid "Quit"
 msgstr ""
 
-#: plasmoid/contents/code/control.js:66
+#: plasmoid/contents/code/control.js:86
 msgid "Next source"
 msgstr ""
 

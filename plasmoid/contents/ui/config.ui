@@ -2,38 +2,32 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
-  <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
+    <width>360</width>
     <height>386</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>350</width>
+    <width>360</width>
     <height>386</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
-  </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
+  <layout class="QVBoxLayout" name="VerticalLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox_3">
+    <widget class="QGroupBox" name="groupBox_1">
      <property name="font">
       <font>
        <weight>75</weight>
@@ -48,12 +42,9 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetFixedSize</enum>
-        </property>
+       <layout class="QGridLayout" name="gridLayout_1">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="label_1">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -95,7 +86,7 @@
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="label_2">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -135,7 +126,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="label_1">
+         <widget class="QLabel" name="label_3">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -195,24 +186,24 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
         </item>
        </layout>
       </item>
-      <item>
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Minimum</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>10</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
      </layout>
     </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_1">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Minimum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_2">
@@ -232,9 +223,6 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <layout class="QGridLayout" name="gridLayout_2">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetFixedSize</enum>
-        </property>
         <item row="1" column="1">
          <widget class="QSpinBox" name="kcfg_buttonSize">
           <property name="sizePolicy">
@@ -285,7 +273,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="QLabel" name="label_5">
+         <widget class="QLabel" name="label_4">
           <property name="font">
            <font>
             <weight>50</weight>
@@ -314,7 +302,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="label_8">
+         <widget class="QLabel" name="label_6">
           <property name="font">
            <font>
             <weight>50</weight>
@@ -378,7 +366,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="label_9">
+         <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
             <weight>50</weight>
@@ -399,7 +387,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer_3">
+    <spacer name="verticalSpacer_2">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -415,7 +403,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
     </spacer>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupBox_3">
      <property name="font">
       <font>
        <weight>75</weight>
@@ -439,10 +427,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QGridLayout" name="gridLayout_1">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetFixedSize</enum>
-        </property>
+       <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="1">
          <widget class="QComboBox" name="kcfg_popupStyle">
           <property name="sizePolicy">
@@ -482,7 +467,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="label_8">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -504,7 +489,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="label_6">
+         <widget class="QLabel" name="label_9">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -561,7 +546,7 @@ disable this option or create a KWin rule for &quot;Plasma&quot;.</string>
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer">
+    <spacer name="verticalSpacer_3">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
