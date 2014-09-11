@@ -8,6 +8,7 @@ build/
 *.qml~
 *.xml~
 *.js~
+*.sh~
 *.desktop~
 *.kate-swp
 .~*
