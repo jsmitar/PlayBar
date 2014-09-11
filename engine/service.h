@@ -60,7 +60,6 @@ public:
 
 private:
 
-    bool setRating(const QString& url, const QString& rating);
 };
 
 #endif // SERVICE_H

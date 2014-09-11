@@ -21,17 +21,6 @@
 #include "service.h"
 #include "playbarengine.h"
 
-#include <filetype.h>
-#include <id3v2tag.h>
-#include <tfile.h>
-#include <tpropertymap.h>
-#include <tstring.h>
-
-#define QStrToTStr(s) TagLib::String(s.toUtf8().data(), TagLib::String::UTF8)
-#define TStrToQStr(s) QString::fromUtf8(s.toCString(true))
-
-using namespace TagLib;
-
 PlayBarService::PlayBarService(const DataEngine::Data& data, QObject* parent)
     : Service(parent), data(data)
 {
@@ -64,40 +53,16 @@ void Job::start()
     if (operation == QLatin1String("SetSource")) {
         PlayBarEngine::p_mpris2Source = parameters().value("name").toString();
         result = true;
-    } else if (operation == QLatin1String("SetRating")) {
+    }
+    // TODO: Implementar el tagger para el rating
+    else if (operation == QLatin1String("SetRating")) {
         const QVariantMap metadata(parameters().value("Metadata").toMap());
 
         if (metadata.isEmpty()) qDebug() << "metadata isEmpty";
-
-        result = setRating(metadata.value("xesam:url").toString(), parameters().value("rating", "0").toString());
+       // result = setRating(metadata.value("xesam:url").toString(), parameters().value("rating", "0").toString());
     }
 
     setResult(result);
-}
-
-bool Job::setRating(const QString& url, const QString& rating)
-{
-//     File *f(0);
-//     f = FileType::createFile(url);
-//
-//     ID3v2::Tag* tag = f
-//
-//     if (tag && !tag->isEmpty()) {
-//         PropertyMap props(tag->properties());
-//         const TagLib::String FMPS_RATING("FMPS_RATING");
-//
-//         props.replace(FMPS_RATING, QStrToTStr(rating));
-//
-//         qDebug() << "f->tag: " << TStrToQStr(tag->properties().toString());
-//         qDebug() << "props" << TStrToQStr(props.toString());
-//         qDebug() << "fileName: " << fileName;
-//         qDebug() << "rating: " << rating;
-//         bool propsReplaced = tag->setProperties(props) == props;
-//         f->save();
-//         if (propsReplaced) return true;
-//     }
-
-    return false;
 }
 
 
