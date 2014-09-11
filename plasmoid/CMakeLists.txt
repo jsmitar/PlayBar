@@ -10,5 +10,5 @@ install(FILES metadata.desktop
 
 install(DIRECTORY locale/es
         DESTINATION ${KDE4_LOCALE_INSTALL_DIR}
-        FILES_MATCHING PATTERN "playbar.mo"
+        FILES_MATCHING PATTERN "*.mo"
         )
