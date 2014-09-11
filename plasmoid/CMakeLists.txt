@@ -8,6 +8,7 @@ install(FILES metadata.desktop
         DESTINATION ${KDE4_SERVICES_INSTALL_DIR}
         RENAME plasma-applet-playbar.desktop )
 
-install(DIRECTORY locale
+install(DIRECTORY locale/es
         DESTINATION ${KDE4_LOCALE_INSTALL_DIR}
-        FILES_MATCHING PATTERN "*.mo")
+        FILES_MATCHING PATTERN "playbar.mo"
+        )
