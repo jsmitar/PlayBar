@@ -5,6 +5,10 @@
      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
     <kcfgfile name="playbar-kcfg"/>
     <group name="General">
+		<entry name="first-run" type="Bool">
+			<label></label>
+			<default>true</default>
+		</entry>
 		<entry name="opaqueIcons" type="Bool">
             <label></label>
             <default>false</default>

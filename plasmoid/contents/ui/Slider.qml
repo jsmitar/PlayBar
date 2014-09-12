@@ -155,7 +155,7 @@ Item{
 			radius: 2
 			anchors.fill: parent
 			color: theme.backgroundColor
-			opacity: 0.5
+			opacity: 0.7
 
 		}
 

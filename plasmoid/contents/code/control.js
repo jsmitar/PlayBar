@@ -96,6 +96,19 @@ function removeActions(){
 	plasmoid.removeAction('sep1')
 }
 
+function autoSelectOpaqueIcons(themeName){
+	print("themeName: " + themeName)
+	switch(themeName){
+		case "default":
+		case "Dynamo Plasma":
+		case "Tibanna":
+		case "Midna":
+		case "org.tilain.plasma":
+			plasmoid.writeConfig("opaqueIcons", "true")
+	}
+}
+
+// callbacks
 function controlBarWheelEvent(wheel){}
 
 function sourceNotify(){}

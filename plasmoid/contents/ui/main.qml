@@ -120,6 +120,7 @@ Item {
 					return
             }
         }
+		print(theme.themeName)
 
         plasmoid.formFactorChanged.connect(formFactorChanged)
 		plasmoid.resize(controlBar.width, controlBar.height)
@@ -133,6 +134,10 @@ Item {
 			}
 		)
 
+		if(plasmoid.readConfig('first-run') == true){
+			plasmoid.writeConfig('first-run', 'false')
+			Control.autoSelectOpaqueIcons(theme.themeName)
+		}
     }
 
 	//ATTENTION: This will be removed in QtQuick 2.0 because will be unnecessary
