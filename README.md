@@ -15,5 +15,5 @@ And compile :D
 $ cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make && sudo make install
 ```
 
-## Help to translate
+## Help me to translate
 At the moment only available in Spanish, if you want to add a language, please follow this [thread.](https://github.com/audoban/PlayBar/issues/4)
