@@ -1,4 +1,22 @@
 #**CHANGELOG**#
+#### Version 0.7
+
+* Fixed problem showing the empty popup with Spotify
+* Opaque buttons are automatically configured for some Plasma-themes
+* Now PlayBar uses its own default icons
+* Added new design for the popup called Cool, go to the config ui
+* Added shortcuts to close and restore media player
+* Added Spanish translation
+* The entire interface has been revised to achieve a more pleasing appearance
+
+NOTE: All icons are customizable and are in SVG format, as well as any plasmoid. 
+This allows any Plasma-theme has its own set of icons for PlayBar
+
+#### Version 0.6.1
+
+* Fixed CMakeLists.txt
+* Fixed Vertical Slider
+
 #### Version 0.6
 
 * Fixed bug that prevented show and hide the separator
