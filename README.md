@@ -22,7 +22,7 @@ PlayBar also supports keyboard shortcuts and these come with a default configura
 ## Add a window rule for _plasma-desktop_
 If you use a Dock as  Plank or CairoDock you may notice as an application called "plasma-desktop" in the Dock appears when the PlayBar popup window opens.
 
-__This can be corrected in two ways:__
+__This can be fixed in two ways:__
 
 1. Opening the config-ui window of the plasmoid and uncheck the option "Avoid close popup when It loses focus:".
 2. Add a [KWin rule](https://raw.githubusercontent.com/audoban/PlayBar/master/plasma-desktop.kwinrule) for "plasma-desktop" in Window Behavior> Window rules.
