@@ -19,7 +19,7 @@ $ cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make && sudo make install
 PlayBar also supports keyboard shortcuts and these come with a default configuration, but if you want change you must go to: System Preferences> Shortcuts and Gestures> Global Keyboard Shortcuts and select the component "Plasma Desktop Shell".
 ![Shortcuts](https://raw.githubusercontent.com/audoban/PlayBar/master/shortcuts.png)
 
-## Add a rule for Gtk Docks
+## Add a window rule for _plasma-desktop_
 If you use a Dock as  Plank or CairoDock you may notice as an application called "plasma-desktop" in the Dock appears when the PlayBar popup window opens.
 
 __This can be corrected in two ways:__
