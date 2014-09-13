@@ -132,7 +132,7 @@ void Shortcuts::stop()
 {
     const bool stopped = playbarEngine->playbackStat() == QLatin1String("Stopped");
 
-    if (stopped)
+    if (!stopped)
         playbarEngine->startOpOverMpris2("Stop");
 }
 
