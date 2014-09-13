@@ -103,6 +103,7 @@ function autoSelectOpaqueIcons(themeName){
 		case "Dynamo Plasma":
 		case "Tibanna":
 		case "Midna":
+		case "midna":
 		case "org.tilain.plasma":
 			plasmoid.writeConfig("opaqueIcons", "true")
 	}
