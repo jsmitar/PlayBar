@@ -25,7 +25,7 @@ If you use a Dock as  Plank or CairoDock you may notice as an application called
 __This can be corrected in two ways:__
 
 1. Opening the config-ui window of the plasmoid and uncheck the option "Avoid close popup when It loses focus:".
-2. Add a [KWin rule](https://raw.githubusercontent.com/audoban/PlayBar/master/plasma-desktop.kwinrule) for "plasma-desktop" in Window Behavior> Window rules and download.
+2. Add a [KWin rule](https://raw.githubusercontent.com/audoban/PlayBar/master/plasma-desktop.kwinrule) for "plasma-desktop" in Window Behavior> Window rules.
 ![KWin Rule](https://raw.githubusercontent.com/audoban/PlayBar/master/kwinrule.png)
 
 ## Help me to translate!
