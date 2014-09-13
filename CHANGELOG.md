@@ -2,6 +2,7 @@
 #### Version 0.7
 
 * Fixed problem showing the empty popup with Spotify
+* Fixed the problem of rating apparently 0 when the Layout changes
 * Opaque buttons are automatically configured for some Plasma-themes
 * Now PlayBar uses its own default icons
 * Added new design for the popup called Cool, go to the config ui
