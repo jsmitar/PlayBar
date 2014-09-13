@@ -45,17 +45,14 @@ Item{
 			plasmoid.addEventListener('configChanged', function(){
 				ratingItems.itemAt(i).Svg = ratingItems.itemAt(i).update()
 			})
-			mpris.ratingChanged.connect(ratingItems.itemAt(i).setRating)
+			mpris.ratingChanged.connect(ratingItems.itemAt(i).fetchRating)
 		}
 	}
 
     Component{
         id: svgDelegate
         PlasmaCore.SvgItem{
-			clip: true
-
 			svg: update()
-            elementId: svgId['low']
             implicitWidth: sizeIcon
             implicitHeight: sizeIcon
 
@@ -65,7 +62,7 @@ Item{
 				else return Svg(plasmoid.readConfig("rating-clear"))
 			}
 
-            function setRating() {
+            function fetchRating() {
                 var iRating = (index + 1)/5
                 if ( rating >= iRating )
                     elementId = svgId['high']
@@ -73,12 +70,15 @@ Item{
                     elementId = svgId['medium']
                 else
                     elementId = svgId['low']
+				elementIdChanged()
             }
 
 			Component.onCompleted: {
+				fetchRating()
 				plasmoid.addEventListener('configChanged', function(){
+					fetchRating()
 					svg = update()
-					setRating()
+					print(elementId)
 				})
 			}
 
