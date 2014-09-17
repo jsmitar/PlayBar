@@ -30,3 +30,7 @@ __This can be fixed in two ways:__
 
 ## Help me to translate!
 At the moment only available in Spanish, if you want to add a language, please follow this  __[thread.](https://github.com/audoban/PlayBar/issues/4)__
+
+## TODO
+* Add SetRating
+* Port to Plasma5
