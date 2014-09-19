@@ -29,7 +29,17 @@ __This can be fixed in two ways:__
 ![KWin Rule](https://raw.githubusercontent.com/audoban/PlayBar/master/kwinrule.png)
 
 ## Help me to translate!
-At the moment only available in Spanish, if you want to add a language, please follow this  __[thread.](https://github.com/audoban/PlayBar/issues/4)__
+If you want to add a language, please follow this  __[thread.](https://github.com/audoban/PlayBar/issues/4)__
+
+## Contributions
+
+- Salim (Fierta) 
+ - [Russian translation](https://github.com/audoban/PlayBar/commit/d4d068852f5608c2ff24586f29a8d0631a087d70)
+ - Testing and bugs reports
+ 
+- Yoyo Fernandez
+ - PKGBUILD for Arch and KaOS 
+ - For his dedicated blog entries and support in spreading PlayBar
 
 ## TODO
 * Add SetRating
