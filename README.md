@@ -33,13 +33,8 @@ If you want to add a language, please follow this  __[thread.](https://github.co
 
 ## Contributions
 
-- Salim Gazizov
- - [Russian translation](https://github.com/audoban/PlayBar/commit/d4d068852f5608c2ff24586f29a8d0631a087d70)
- - Testing and bugs reports
- 
-- Yoyo Fernandez
- - PKGBUILD for Arch and KaOS 
- - For his dedicated blog entries and support in spreading PlayBar
+* __Salim Gazizov:__ [Russian translation](https://github.com/audoban/PlayBar/commit/d4d068852f5608c2ff24586f29a8d0631a087d70), Testing and bugs reports.
+* __Yoyo Fernandez:__ PKGBUILD for [Arch and KaOS](https://github.com/KaOS-Personal-Packages/kdeplasma-applets-playbar) and thanks for his dedicated blog entries and support in spreading PlayBar.
 
 ## TODO
 * Add SetRating
