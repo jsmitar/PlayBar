@@ -33,7 +33,7 @@ If you want to add a language, please follow this  __[thread.](https://github.co
 
 ## Contributions
 
-- Salim (Fierta) 
+- Salim Gazizov
  - [Russian translation](https://github.com/audoban/PlayBar/commit/d4d068852f5608c2ff24586f29a8d0631a087d70)
  - Testing and bugs reports
  
