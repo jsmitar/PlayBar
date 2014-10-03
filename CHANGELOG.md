@@ -1,4 +1,8 @@
 #**CHANGELOG**#
+### Version 0.7.1
+* Fixed regression of stop keyboard shortcut
+* Added Russian translation (by Salim Gazizov)
+
 #### Version 0.7
 
 * Fixed problem showing the empty popup with Spotify
@@ -11,7 +15,7 @@
 * The entire interface has been revised to achieve a more pleasing appearance
 * Updated README.md
 
-NOTE: All icons are customizable and are in SVG format, as well as any plasmoid. 
+NOTE: All icons are customizable and are in SVG format, as well as any plasmoid.
 This allows any Plasma-theme has its own set of icons for PlayBar
 
 #### Version 0.6.1
