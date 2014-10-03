@@ -83,7 +83,7 @@ Item{
 			}
 
 			Component.onDestruction: {
-				mpris.ratingChanged.disconnect(setRating)
+				mpris.ratingChanged.disconnect(fetchRating)
 			}
         }
     }
