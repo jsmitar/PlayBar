@@ -13,6 +13,9 @@ build/
 *.kate-swp
 .~*
 
+# mo files
+*.mo
+
 # KDevelop Project files
 *.kdev4
 .kdev4/
